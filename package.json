@@ -1,0 +1,25 @@
+{
+  "name": "ms2-2019",
+  "version": "1.0.0",
+  "description": "ms2-2019 spring 2019",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanabest/ms2-2019.git"
+  },
+  "author": "Ryan Best",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanabest/ms2-2019/issues"
+  },
+  "homepage": "https://github.com/ryanabest/ms2-2019#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "3.9.1",
+    "gulp-sass": "^4.0.2"
+  }
+}
