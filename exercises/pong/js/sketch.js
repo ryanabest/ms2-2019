@@ -1,24 +1,22 @@
 let paddle,
     ball,
     balls,
-    width = window.innerWidth,
-    height = window.innerHeight,
-    score = 0;
+    width = window.innerWidth * 0.95,
+    height = window.innerHeight * 0.95;
 
 function setup() {
-  this.y = 30;
   createCanvas(width,height);
-  paddle = new pongPaddle();
+  paddle = new PongPaddle();
 
   // one pong ball
-  ball = new pongBall();
+  // ball = new PongBall();
 
   // multiple balls
-  // balls = [];
-  // let num = 5;
-  // for (let n=0;n<num;n++) {
-  //   balls.push(new pongBall());
-  // }
+  balls = [];
+  let num = 20;
+  for (let n=0;n<num;n++) {
+    balls.push(new PongBall());
+  }
 
 }
 
@@ -28,15 +26,13 @@ function draw() {
   paddle.create();
 
   // one ball
-  ball.create();
-  ball.move(paddle.x,paddle.x + paddle.w,paddle.y);
+  // ball.move(paddle.x,paddle.x + paddle.w,paddle.y);
 
   // multiple balls
-  // for (let b=0;b<balls.length;b++) {
-  //   let ball = balls[b];
-  //   ball.create();
-  //   ball.move(paddle.x,paddle.x + paddle.w,paddle.y);
-  // }
+  for (let b=0;b<balls.length;b++) {
+    let ball = balls[b];
+    ball.move(paddle.x,paddle.x + paddle.w,paddle.y);
+  }
 }
 
 function mouseMoved() {
@@ -44,22 +40,17 @@ function mouseMoved() {
 }
 
 // Pong Ball Class
-class pongBall {
+class PongBall {
 
   constructor() {
-    this.diameter = 50;
+    this.diameter = 30;
     this.radius = this.diameter/2;
-    this.speed = 5;
-    this.yDirection = 1;
-    this.xDirection = 1;
+    this.speed = random(1,2);
+    this.yDirection = random(1,3);
+    this.xDirection = random(1,3);
     this.x = (Math.random() * (width - 2*this.diameter)) + this.diameter;
     this.y = (Math.random() * (height * 0.5)) + this.diameter;
-  }
-
-  create() {
-    noStroke();
-    fill('white');
-    ellipse(this.x,this.y,this.diameter);
+    this.score = 0;
   }
 
   move(paddleXmin,paddleXmax,paddleY) {
@@ -74,30 +65,31 @@ class pongBall {
       this.yDirection *= -1;
     }
 
-    // Middle of ball is below the top of the paddle
-    if (this.y > paddleY) {
-      this.yDirection = 1; // continue going down forever
-
-    } else if (this.x - this.radius >= paddleXmin // Left side of paddle
+    if (this.x - this.radius >= paddleXmin // Left side of paddle
             && this.x + this.radius <= paddleXmax // Right side of paddle
-            && this.y + this.radius > paddleY) { // Bottom of ball is below the top of the paddle
-      this.yDirection = -1; // bounce
+            && this.y > paddleY - this.radius
+            && this.y < paddleY - this.radius + (this.speed*this.yDirection)) { // Bottom of ball is below the top of the paddle
+      this.yDirection *= -1; // bounce
 
-      score += 1; // add one to the score
-      console.log(score);
-      if (score/5 === Math.ceil(score/5)) {
-        this.speed += 2; // increase the speed every 5 wins
-      };
+      this.score++; // add one to the score
+      this.speed *= 1.1; // increase the speed
     }
 
     // Move the ball
     this.x += this.xDirection * this.speed;
     this.y += this.yDirection * this.speed;
 
+    noStroke();
+    fill('white');
+    ellipse(this.x,this.y,this.diameter);
+    fill('black');
+    textAlign(CENTER, CENTER);
+    text(this.score,this.x,this.y)
+
   }
 }
 
-class pongPaddle {
+class PongPaddle {
   constructor() {
     this.w = width / 4;
     this.h = 20;
@@ -111,6 +103,6 @@ class pongPaddle {
   create() {
     noStroke();
     fill('lightblue');
-    rect(this.x,this.y,this.w,this.h);
+    rect(this.x,this.y,this.w,this.h,10);
   }
 }
