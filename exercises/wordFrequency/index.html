@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--p5js download: https://p5js.org/download/-->
+    <!--Content Delivery Network (CDN): https://cdnjs.com/libraries/p5.js-->
+    <title>Word Frequency</title>
+    <!--p5 core library, minified-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.13/p5.min.js" type="text/javascript"></script>
+    <!--p5 interaction with the DOM-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.13/addons/p5.dom.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+      <script>
+      let sotu1,
+          sotu2;
+
+      class Sotu {
+        constructor(raw,y) {
+          this.raw = raw;
+          this.sotu;
+          this.dictionary = [];
+          this.textX = 0;
+          this.textY = y;
+        }
+
+        load() { this.sotu = loadStrings(this.raw);}
+
+        display() {
+          push();
+          translate(this.textX,height * this.textY);
+
+          this.dictionary.forEach(function(element) {
+            textSize(6 + element.count);
+            let txtWidth = textWidth(element.word);
+            text(element.word, 0, 0);
+            translate(txtWidth,0);
+          })
+          pop();
+        }
+
+        analyze() {
+          let dictionary = this.dictionary;
+
+          this.sotu.forEach(function(phrase) {
+            // console.log(phrase);
+            let words = phrase.split(' ');
+
+            words.forEach(function(word) {
+              // console.log(word);
+              let filteredWords = dictionary.filter(function(element){
+                return element.word == word;
+              })
+
+              if (filteredWords.length > 0) {
+                // match
+                // console.log(filteredWords);
+                filteredWords[0].count++;
+              } else {
+                // no match
+                dictionary.push({'word': word, 'count': 1});
+              }
+            });
+
+            dictionary.sort(function(a,b) {
+              return b.count - a.count;
+            });
+
+          });
+
+        }
+
+        dragged() {
+          this.textX += mouseX - pmouseX;
+          // console.log(this.textX);
+          background(255);
+          // this.display();
+        }
+
+    }
+
+    function preload() {
+      sotu1 = new Sotu('sotu-t-1.txt',0.25);
+      sotu2 = new Sotu('sotu-t-2.txt',0.75);
+      sotu1.load();
+      sotu2.load();
+    }
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      sotu1.analyze();
+      sotu1.display();
+      sotu2.analyze();
+      sotu2.display();
+    }
+
+    function mouseDragged() {
+      if (mouseY > height * sotu1.textY) {
+        sotu2.dragged();
+        sotu1.display();
+        sotu2.display();
+      } else {
+        sotu1.dragged();
+        sotu1.display();
+        sotu2.display();
+      }
+    }
+
+
+    </script>
+  </body>
+</html>
