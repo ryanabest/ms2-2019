@@ -1,2 +1,3 @@
 node_modules/*
 *.ai
+exercises/python2.14.19/env/*
