@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Map</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700" rel="stylesheet">
+  <style>
+    /* svg {
+      background-color: black;
+    } */
+    .class-A {
+      fill: #8C9F5B;
+    }
+    .class-B {
+      fill: #8AA1AB;
+    }
+    .class-C {
+      fill: #D6B64C;
+    }
+    .class-D {
+      fill: #CC6D7B;
+    }
+    .class-E {
+      fill: none;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>MAP</h1>
+  <script>
+    var width = 2750,
+        height = 1375;
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+
+    var projection = d3.geoMercator()
+        .center([-73.98,40.78])
+        .scale(105000)
+        .translate([width / 2, height / 2]);
+
+    var geoGenerator = d3.geoPath()
+      .projection(projection);
+  </script>
+  <script src="js/map.js"></script>
+  <!-- <script src="js/map2.js"></script> -->
+</body>
+</html>
