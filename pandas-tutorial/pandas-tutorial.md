@@ -50,7 +50,7 @@ import pandas as pd
 There are two main data structures in _pandas_:
 
 | Dimensions | Name | Official Description | Ryan's Oversimplification |
-|---|---|---|
+|------------|------|----------------------|---------------------------|
 | 1 | Series | 1D labeled homogeneously-typed array | Columns |
 | 2 | DataFrame | General 2D labeled, size-mutable tabular structure with potentially heterogeneously-typed column | Tables |
 
