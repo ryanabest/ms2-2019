@@ -4,7 +4,7 @@
 
 ![pandas logo](https://pandas.pydata.org/_static/pandas_logo.png)
 
-> In computer programming, _pandas_ is a software library written for the Python programming language for data manipulation and analysis. In particular, it offers data structures and operations for manipulating numerical tables and time series [_Wikipedia_](https://en.wikipedia.org/wiki/Pandas_(software)
+> In computer programming, _pandas_ is a software library written for the Python programming language for data manipulation and analysis. In particular, it offers data structures and operations for manipulating numerical tables and time series [_Wikipedia_](https://en.wikipedia.org/wiki/Pandas_(software))
 
 _[pandas](https://pandas.pydata.org/)_ is an open source Python library that provides some really easy-to-use and performant data structures and analysis tools/frameworks. I've mostly used it for making data cleaning, organization, and preparation easier, but _pandas_ also contains a suite of exciting analysis and modeling tools. _pandas_ can do a lot of the analysis and statistics that R does, but allows you to stay within Python instead of switching to this more domain specific language. Check out [this page](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) for a great list of all the things that _pandas_ does really well. It also has a fantastic [documentation section](https://pandas.pydata.org/pandas-docs/stable/index.html) and a ton of users worldwide (that have already answered so many questions we may have on [StackOverflow](https://stackoverflow.com/questions/tagged/pandas?pageSize=15&sort=votes)), which goes a long way in making it a __really easy__ third-party package to use.
 
