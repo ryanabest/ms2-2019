@@ -4,7 +4,7 @@
 
 ![pandas logo](https://pandas.pydata.org/_static/pandas_logo.png)
 
-> In computer programming, _pandas_ is a software library written for the Python programming language for data manipulation and analysis. In particular, it offers data structures and operations for manipulating numerical tables and time series. ([_Wikipedia_](https://en.wikipedia.org/wiki/Pandas_(software))
+> In computer programming, _pandas_ is a software library written for the Python programming language for data manipulation and analysis. In particular, it offers data structures and operations for manipulating numerical tables and time series [_Wikipedia_](https://en.wikipedia.org/wiki/Pandas_(software)
 
 _[pandas](https://pandas.pydata.org/)_ is an open source Python library that provides some really easy-to-use and performant data structures and analysis tools/frameworks. I've mostly used it for making data cleaning, organization, and preparation easier, but _pandas_ also contains a suite of exciting analysis and modeling tools. _pandas_ can do a lot of the analysis and statistics that R does, but allows you to stay within Python instead of switching to this more domain specific language. Check out [this page](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) for a great list of all the things that _pandas_ does really well. It also has a fantastic [documentation section](https://pandas.pydata.org/pandas-docs/stable/index.html) and a ton of users worldwide (that have already answered so many questions we may have on [StackOverflow](https://stackoverflow.com/questions/tagged/pandas?pageSize=15&sort=votes)), which goes a long way in making it a __really easy__ third-party package to use.
 
@@ -49,18 +49,18 @@ import pandas as pd
 
 There are two main data structures in _pandas_:
 
-Dimensions | Name | Official Description | How Ryan Thinks About Them
---- | --- | ---
-1 | Series | 1D labeled homogeneously-typed array | Columns
-2 | DataFrame | General 2D labeled, size-mutable tabular structure with potentially heterogeneously-typed column | Tables
+| Dimensions | Name | Official Description | Ryan's Oversimplification |
+| --- | --- | --- |
+| 1 | Series | 1D labeled homogeneously-typed array | Columns |
+| 2 | DataFrame | General 2D labeled, size-mutable tabular structure with potentially heterogeneously-typed column | Tables |
 
-The vast majority of what I've done with _pandas_ consists of me putting data from a _json_, _csv_, or other raw file into DataFrames and manipulating those DataFrames to organize or clean the data how I want it to look. This first section will cover how to get data into a DataFrame and understand what that data looks like. The next section will get into a few of the concepts you can use to manipulate that data with _pandas_.
+The vast majority of what I've done with _pandas_ consists of me putting data from a _json_, _csv_, or other raw file into DataFrames and manipulating those DataFrames to organize or clean the data how I want it. This first section will cover how to get data into a DataFrame and understand what that data looks like. The next section will get into a few of the concepts you can use to manipulate that data with _pandas_.
 
 ### Loading Data Into a DataFrame
 
 The data we've picked to use for this session is a csv with daily records of the weather in Central Park in 2016 from [Kaggle](https://www.kaggle.com/mathijs/weather-data-in-new-york-city-2016). Let's download that csv and save it in our _pandas-tutorial_ directory.
 
-We can use the [read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) command to load a csv into a DataFrame. The documentation looks intimidating, but there's actually only one parameter that's required to load a DataFrame, which is the _filepath_or_buffer_ parameter, which just tells _pandas_ where the csv is that we want to load. The rest of the parameters have default values that we might need to examine if things look off, but let's first see if the defaults work:
+We can use the [read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) command to load a csv into a DataFrame. The documentation looks intimidating, but there's actually only one parameter that's required to load a DataFrame, which is the _filepath_or_buffer_ parameter, which just tells _pandas_ where the csv is that we want to load. The rest of the parameters have default values that should work for our csv in this case:
 
 ```Python
 import numpy as np
@@ -82,7 +82,9 @@ weather.head()
 2  3-1-2016                   45                   35                 40.0          0.00       0.0          0
 3  4-1-2016                   36                   14                 25.0          0.00       0.0          0
 4  5-1-2016                   29                   11                 20.0          0.00       0.0          0
+```
 
+```python
 weather.tail()
 
 ## Output: ##
@@ -102,7 +104,7 @@ We can access a specific column by using square brackets after the DataFrame nam
 weather['date']
 ```
 
-You can then use these column selection (or a combinations of columns) with different operators, like the _head( )_ and _tail( )_ we just looked at:
+You can use these column selection (or a combinations of columns) with different operators, like _head( )_ and _tail( )_ :
 
 ```python
 weather[['date','average temperature']].head()
@@ -114,7 +116,9 @@ weather[['date','average temperature']].head()
 2  3-1-2016                 40.0
 3  4-1-2016                 25.0
 4  5-1-2016                 20.0
+```
 
+```python
 weather['precipitation'].tail()
 
 ## Output: ##
@@ -282,9 +286,9 @@ _pandas_ also lets us index on __boolean expressions__, which allows us to filte
 
 ```python
 coldDays = weather.loc[weather['average temperature'] < 25.0]
+coldDays.shape
 
 ## Output: ##
-coldDays.shape
 (9, 7)
 ```
 
@@ -301,9 +305,11 @@ coldDays['minimum temperature'].min()
 
 Let's get back to our issue of __'T'__ values, which was trace measurements, but not enough for a reading. Let's filter out any row with these T values into a new DataFrame called weatherFiltered:
 
-```python2
+```python
 weatherFiltered = weather.loc[(weather['precipitation'] <> 'T') & (weather['snow fall'] <> 'T') & (weather['snow depth'] <> 'T')]
 weatherFiltered.shape
+
+## Output: ##
 (325, 7)
 ```
 
@@ -374,11 +380,11 @@ max              96.000000            81.000000            88.500000       2.310
 
 ### Joins
 
-_pandas_ also makes joining DataFrames very easy. Let's create a data frame for all our weather in December and another for all the weather in February. Then we can join these two data frames on __day__ to see which temperature was hotter on the first day of the month.
+_pandas_ also helps us join multiple DataFrames together. Let's create a data frame for all our weather in December and another for all the weather in February. Then we can join these two data frames on __day__ to see which temperature was hotter on the first day of the month.
 
-_(there's probably better ways to do this, but we can answer this question with a join)_
+_(there's definitely better approaches to answering this question, but we can use this to demonstrate how joins work)_
 
-OK first, let's convert our date column to a _date_ data type and then create new columns for the month, day, and year:
+First, let's convert our date column to a _date_ data type and then create new columns for the month, day, and year:
 
 ```python
 weather['date_new'] = pd.to_datetime(weather['date'])
@@ -407,7 +413,7 @@ jan_feb.loc[jan_feb['day']==1,('average temperature_jan','average temperature_fe
 
 So it looks like the temperature on the first day in January was 2 degrees warmer than the first day in February!
 
-## Useful Links
+## Other Useful Links
 
 - [10 Minutes to Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html) – beginners guide
 - [10 Minute Tour of Pandas](https://vimeo.com/59324550) – video by the author
