@@ -23,7 +23,7 @@ def draw_text():
         text("Brooklyn",w*0.75,margin*6)
         
     fill("#000")
-    layout(align=LEFT,margin=(4.5*margin))
+    layout(align=LEFT,margin=(5*margin))
     with font(15):
         intro_text = ""
         intro_text += "This book design explores the language used by the Home Owner Loan Corporation (HOLC) appraisers to rate the potential security of real estate investments within neighborhood tracts, connecting these judgements with snapshots of those same neighborhoods today."
@@ -35,13 +35,12 @@ def draw_text():
         intro_text += "The motivations behind these ever-important neighborhood gradings were all too often blatantly motivated by race. In this project I explore the language used to document these redlining decisions, exploring the reasoning appraisers gave behind the grades they doled out while connecting this language with quick jaunts into the current-day versions of these communities."
         intro_text += "\n\n"
         intro_text += "\n\n"
-        intro_text += "\n\n"
         intro_text += "Data Sources:"
         intro_text += "\n\n"
         intro_text += "Robert K. Nelson, LaDale Winling, Richard Marciano, Nathan Connolly, et al., “Mapping Inequality,” American Panorama, ed. Robert K. Nelson and Edward L. Ayers, accessed February 25, 2019, https://dsl.richmond.edu/panorama/redlining/"
         intro_text += "\n\n"
         intro_text += "Coates, Ta-Nehisi. “The Case for Reparations.” The Atlantic. June 2014. https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/"
-        text(intro_text,h,margin*8,h-(4.5*margin))
+        text(intro_text,h,margin*8,h-(5*margin))
 
 
 draw_text()
