@@ -1,0 +1,48 @@
+import json
+import csv
+import re
+# import time
+from pprint import pprint
+
+h = 1280
+w = h*2
+margin = 50
+
+    
+def draw_text():
+    size(w, h)
+    font('Roboto Mono')
+    # font('Roboto Mono',50)
+    fill('#000')
+    align(CENTER)
+    with(font('bold',80)):
+        text("CLARIFYING REMARKS",w*0.75,margin*4)
+    
+    fill("#696969")
+    with(font('medium',70)):
+        text("Brooklyn",w*0.75,margin*6)
+        
+    fill("#000")
+    layout(align=LEFT,margin=(4.5*margin))
+    with font(15):
+        intro_text = ""
+        intro_text += "This book design explores the language used by the Home Owner Loan Corporation (HOLC) appraisers to rate the potential security of real estate investments within neighborhood tracts, connecting these judgements with snapshots of those same neighborhoods today."
+        intro_text += "\n\n"
+        intro_text += "As part of the mid-1930's New Deal suite of government programs aimed at providing stimulus to an American economy saddled with the Great Depression, president Franklin D. Roosevelt set his sights on boosting The United States' mortgage and home building market through his establishment of the HOLC. This organization aimed to spur real estate investment and facilitate homeownership by introducing and standardizing appraisal methods within this mortgage lending process. Part of this initiative included creating physical Security Maps of more than 200 cities across the United States, detailing neighborhood-by-neighborhood factors that would either favorably or detrimentally influence the perceived security of a real estate investment within that community. Each neighborhood was given a color-coded grade ranging from Green/A ('best') to Red/D ('hazardous')."
+        intro_text += "\n\n"
+        intro_text += "This process, later coined 'redlining' after these maps littered with zones of perceived perpetual blight covered in red ink, determined who could feasibly participate in mortgage markets. Those enclosed in redlined neighborhoods would have a hard path to homeownership, finding it impossible to procure fair, non-predatory mortgages or insurance – from either the private market or the very government that issued these damning grades. People who lived in these neighborhoods were essentially 'locked out of the greatest mass-based opportunity for wealth accumulation in American history' (Melvin L. Oliver and Thomas M. Shapiro in their 1995 book, Black Wealth/White Wealth, quoted by Ta-Nehisi Coates)."
+        intro_text += "\n\n"
+        intro_text += "The motivations behind these ever-important neighborhood gradings were all too often blatantly motivated by race. In this project I explore the language used to document these redlining decisions, exploring the reasoning appraisers gave behind the grades they doled out while connecting this language with quick jaunts into the current-day versions of these communities."
+        intro_text += "\n\n"
+        intro_text += "\n\n"
+        intro_text += "\n\n"
+        intro_text += "Data Sources:"
+        intro_text += "\n\n"
+        intro_text += "Robert K. Nelson, LaDale Winling, Richard Marciano, Nathan Connolly, et al., “Mapping Inequality,” American Panorama, ed. Robert K. Nelson and Edward L. Ayers, accessed February 25, 2019, https://dsl.richmond.edu/panorama/redlining/"
+        intro_text += "\n\n"
+        intro_text += "Coates, Ta-Nehisi. “The Case for Reparations.” The Atlantic. June 2014. https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/"
+        text(intro_text,h,margin*8,h-(4.5*margin))
+
+
+draw_text()
+export('zonePDFs/page1.pdf')
