@@ -1,0 +1,15 @@
+import glob,os
+
+size(1700, 1100)
+background('#e8e8e8')
+
+borough = 'Brooklyn'
+os.chdir('zonePDFs/' + borough)
+
+for file in glob.glob("*.pdf"):
+    image(file,0,125,1700,1100,plot=True)
+    export('../../zonePDFs_1117/'+borough+'/'+file)
+    # print('../../zonePDFs_1117/'+borough+'/'+file)
+    clear()
+
+# image('../../zonePDFs/Bronx/Bronx_A1.pdf',0,125,1700,1100,plot=True)

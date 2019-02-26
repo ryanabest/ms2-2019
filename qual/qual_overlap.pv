@@ -1,0 +1,120 @@
+import json
+import csv
+import re
+# import time
+from pprint import pprint
+
+h = 1280
+w = h
+colors        = ['#699e4d','#5c91a8','#d6b64c','#cc6d7b']  ## [A,B,C,D]
+colors_grades = {'A':colors[0],'B':colors[1],'C':colors[2],'D':colors[3],'E':'#fff'}
+margin = 50
+text_size = 27
+
+def load_borough(borough):
+    borough_file = 'data/HOLC_'+borough+'.geojson'
+    borough_data = json.load(open(borough_file))['features']
+    return borough_data
+
+def draw_image(feature,borough):
+    grade    = feature['properties']['holc_grade']
+    holc_id  = feature['properties']['holc_id']
+    imageSrc = 'images/' + borough + '/' + borough + '_' + holc_id + '.jpg'
+    fill(colors_grades[grade],0.7)
+    image(imageSrc,0,0,width=h,height=h,plot=True)
+    rect(0,0,h,h)
+    
+def draw_text(feature,borough,highlight_words):
+    descr = ""
+    grade    = feature['properties']['holc_grade']
+    holc_id  = feature['properties']['holc_id']
+    stylesheet('hl',weight='bold',fill='#000',size=text_size*1.4)
+    stylesheet('i',weight='bold',italic=True,fill='#c0c0c0')
+    fill('#fff')
+    font('Roboto Mono',text_size)
+    
+    def add_text(descr,paragraph):
+        word_list = paragraph.split(' ')
+        for wl in word_list:
+            w = re.sub(r'[^\w\s]','',wl.lower())
+            if (w in highlight_words):
+                descr+='<hl>'+wl+'</hl> '
+            else:
+                descr+=wl.replace('&','&amp;')+' '
+        return descr
+        
+    if 'area_description_data' in feature['properties'].keys():
+        description = feature['properties']['area_description_data']
+        
+        descr += '<i>Favorable:</i> '
+        ## favorable
+        if '1b' in description.keys():
+            favorable = description['1b']
+            descr = add_text(descr,favorable)
+        descr+= '\n'
+            
+        descr += '<i>Detrimental:</i> '
+        ## detrimental
+        if '1c' in description.keys():
+            detrimental = description['1c']
+            descr = add_text(descr,detrimental)
+        descr+= '\n'
+          
+        descr += '<i>Clarifying Remarks:</i> '  
+        ## clarifying
+        if '5' in description.keys():
+            clarifying = description['5']
+            descr = add_text(descr,clarifying)
+    
+    if (descr!=''):
+        text(margin,margin*2.5,h-(2*margin),h-(1.5*margin),xml=descr)
+
+def draw_poster(feature,borough,highlight_words,clear_boolean):
+    size(w, h)
+    grade    = feature['properties']['holc_grade']
+    holc_id  = feature['properties']['holc_id']
+    draw_image(feature,borough)
+    align(LEFT)
+    draw_text(feature,borough,highlight_words)
+    
+    fill('#fff')
+    align(CENTER)
+    with font("bold",40):
+        text(borough + ' ' + str(holc_id),h/2,1.5*margin)
+    
+    export_dir = 'zonePDFs_overlap/' + borough
+    export_pdf = export_dir + '/' + borough + '_' + holc_id + '.pdf'
+    export(export_pdf)
+    # pprint('exported ' + export_pdf)
+    if clear_boolean:
+        clear()
+        
+
+def load_highlights():
+    highlight_words = []
+    with open('dictionaries/highlighted_words.csv', mode='r') as raw_file:
+        highlight_csv = csv.DictReader(raw_file, delimiter = ',')
+        for row in highlight_csv:
+            highlight_words.append(row['\xef\xbb\xbfword'])
+    return highlight_words
+
+
+def generate_all(boroughs):
+    highlight_words = load_highlights()
+
+    for borough in boroughs:
+        boro = load_borough(borough)
+        for b in boro:
+            draw_poster(b,borough,highlight_words,True)
+        
+        
+def generate_one(borough,holc_id_input):
+    highlight_words = load_highlights()
+    boro = load_borough(borough)
+    for b in boro:
+        holc_id = b['properties']['holc_id']
+        if (holc_id == holc_id_input):
+            draw_poster(b,borough,highlight_words,False)
+
+# generate_one('Manhattan','D4')
+generate_all(["Brooklyn","Manhattan","Bronx"])
