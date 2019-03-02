@@ -1,3 +1,7 @@
 node_modules/*
 *.ai
 **/env/*
+qual/images/*
+qual/ZonePDFs/*
+!qual/ZonePDFs/All
+qual/zonePDFs_overlap/*

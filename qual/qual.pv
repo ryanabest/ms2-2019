@@ -106,8 +106,8 @@ def generate_all(boroughs):
 
     for borough in boroughs:
         boro = load_borough(borough)
-        with export('zonePDFs/' + borough + '/' + borough + '.pdf') as pdf:
-            pprint('zonePDFs/' + borough + '/' + borough + '.pdf')
+        with export('zonePDFs/All/' + borough + '.pdf') as pdf:
+            pprint('zonePDFs/All/' + borough + '.pdf')
             for b in boro:
                 with pdf.page:
                     draw_poster(b,borough,highlight_words)
@@ -122,5 +122,5 @@ def generate_one(borough,holc_id_input):
         if (holc_id == holc_id_input):
             draw_poster(b,borough,highlight_words)
 
-generate_one('Brooklyn','C2')
+generate_one('Brooklyn','C3')
 # generate_all(["Bronx","Manhattan","Brooklyn"])
