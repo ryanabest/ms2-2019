@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quant</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700" rel="stylesheet">
+  <style>
+    .text {
+      font-family: "Roboto Mono";
+      font-size: 1.2em;
+    }
+
+    #tooltip {
+      position: absolute;
+      /* transform: translate(10,10); */
+      background-color: black;
+      color: white;
+    }
+
+    .active {
+      background-color: black;
+      color: white;
+    }
+
+    .legend {
+      text-align: center;
+    }
+
+    #row {
+      display: flex;
+    }
+
+    .cont {
+      width: 635px;
+      margin: 0;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="buttons">
+    <button id="button-a" onclick="setClip('a')" class="active">A</button>
+    <button id="button-b" onclick="setClip('b')" class="inactive">B</button>
+    <button id="button-c" onclick="setClip('c')" class="inactive">C</button>
+    <button id="button-d" onclick="setClip('d')" class="inactive">D</button>
+    <button id="button-all" onclick="setClip('all')" class="inactive">All</button>
+  </div>
+  <div id="tooltip"></div>
+  <div id="row">
+    <div id="homeownership" class="cont">
+      <div id="homeownership-legend" class="legend"></div>
+      <div id="homeownership-maps" class="maps"></div>
+    </div>
+    <div id="poverty" class="cont">
+      <div id="poverty-legend" class="legend"></div>
+      <div id="poverty-maps" class="maps"></div>
+    </div>
+    <div id="nonwhite" class="cont">
+      <div id="nonwhite-legend" class="legend"></div>
+      <div id="nonwhite-maps" class="maps"></div>
+    </div>
+  </div>
+  <script>
+  function setClip(grade) {
+    d3.selectAll('.tract-path')
+      .attr('clip-path','url("#redline-'+grade+'")')
+    d3.selectAll('button')
+      .attr('class','inactive')
+    d3.select('#button-'+grade)
+       .attr('class','active')
+  }
+  </script>
+  <script>
+    var width = 635,
+        height = 730,
+        legendSize = 35,
+        legendBlocks = 10,
+        colors = {"homeownership":"#d95f02","poverty":"#1b9e77","nonwhite":"#7570b3"},
+        projection = d3.geoMercator()
+            .center([-73.81,40.82])
+            .scale(60000)
+            // .translate([width / 2, height / 2])
+            ,
+        geoGenerator = d3.geoPath()
+          .projection(projection);
+
+   let homeLegend =  d3.select("#homeownership-legend").append("svg")
+         .attr("width", (legendSize + 6) * legendBlocks)
+         .attr("height", legendSize * 5)
+         .attr("id","svg-homeownership-legend")
+         .attr("class","svg-map");
+
+   let povertyLegend =  d3.select("#poverty-legend").append("svg")
+         .attr("width", (legendSize + 6) * legendBlocks)
+         .attr("height", legendSize * 5)
+         .attr("id","svg-poverty-legend")
+         .attr("class","svg-map");
+
+    let nonwhiteLegend =  d3.select("#nonwhite-legend").append("svg")
+          .attr("width", (legendSize + 6) * legendBlocks)
+          .attr("height", legendSize * 5)
+          .attr("id","svg-nonwhite-legend")
+          .attr("class","svg-map");
+
+    function drawLegend(svg) {
+      let g = d3.select("#" + svg + '-legend').append('g')
+                 .attr('class','g-legend'),
+          boxG = g.append('g').attr('class','g-boxes'),
+          textG = g.append('g').attr('class','g-text'),
+          map = svg.split('-')[1];
+
+      for (let i=0;i<legendBlocks;i++) {
+        boxG.append('rect')
+         .attr('fill',colors[map])
+         .attr('width',legendSize)
+         .attr('height',legendSize)
+         .attr('y',2*legendSize)
+         .attr('x',legendSize + (legendSize*i))
+         .attr('opacity',i/legendBlocks)
+      }
+
+      boxG.append('rect')
+       .attr('fill','none')
+       .attr('stroke','#000')
+       .attr('stroke-width',1)
+       .attr('width',legendSize*legendBlocks)
+       .attr('height',legendSize)
+       .attr('y',2*legendSize)
+       .attr('x',legendSize)
+       .attr('id','legend-border')
+
+      textG.append('text')
+       .text('Percent ' + map.charAt(0).toUpperCase() + map.slice(1))
+       .attr('text-anchor','middle')
+       .attr('y',legendSize*1.5)
+       .attr('x',((legendBlocks+2)*legendSize)/2)
+       .attr('class','text')
+
+      textG.append('text')
+        .text('0%')
+        .attr('text-anchor','middle')
+        .attr('y',legendSize*3.75)
+        .attr('x',legendSize*1.55)
+        .attr('class','text')
+
+      textG.append('text')
+        .text(function() {
+          if (map==='poverty') {
+            return '50%'
+          } else {
+            return '100%'
+          };
+        })
+        .attr('text-anchor','middle')
+        .attr('y',legendSize*3.75)
+        .attr('x',(legendSize*legendBlocks)+(legendSize*0.55))
+        .attr('class','text')
+    }
+
+    function loadClips(svg) {
+      d3.json('data/HOLC/HOLC_All.geojson').then(function(json) {
+        let defs = d3.select('#'+svg)
+                     .append('defs')
+        let clipA = d3.select('#'+svg)
+                      .select('defs')
+                      .append("clipPath")
+                      .attr("id","redline-a"),
+            clipB = d3.select('#'+svg)
+                      .select('defs')
+                      .append("clipPath")
+                      .attr("id","redline-b"),
+            clipC = d3.select('#'+svg)
+                      .select('defs')
+                      .append("clipPath")
+                      .attr("id","redline-c"),
+            clipD = d3.select('#'+svg)
+                      .select('defs')
+                      .append("clipPath")
+                      .attr("id","redline-d"),
+            clipAll = d3.select('#'+svg)
+                      .select('defs')
+                      .append("clipPath")
+                      .attr("id","redline-all");
+
+        let holc_a = [],
+            holc_b = [],
+            holc_c = [],
+            holc_d = [],
+            holc_all = [];
+
+        json.features.forEach((j) => {
+          holc_all.push(j);
+          if (j.properties.holc_grade === 'A') {
+            holc_a.push(j);
+          } else if (j.properties.holc_grade === 'B') {
+            holc_b.push(j);
+          } else if (j.properties.holc_grade === 'C') {
+            holc_c.push(j);
+          } else if (j.properties.holc_grade === 'D') {
+            holc_d.push(j);
+          }
+        });
+
+       clipA.selectAll('path')
+                  .data(holc_a)
+                  .enter()
+                  .append('path')
+                  .attr('d',geoGenerator);
+
+        clipB.selectAll('path')
+                   .data(holc_b)
+                   .enter()
+                   .append('path')
+                   .attr('d',geoGenerator);
+
+         clipC.selectAll('path')
+                    .data(holc_c)
+                    .enter()
+                    .append('path')
+                    .attr('d',geoGenerator);
+
+          clipD.selectAll('path')
+                     .data(holc_d)
+                     .enter()
+                     .append('path')
+                     .attr('d',geoGenerator);
+
+           clipAll.selectAll('path')
+                      .data(holc_all)
+                      .enter()
+                      .append('path')
+                      .attr('d',geoGenerator);
+      })
+    }
+
+    function mousemove(data) {
+      let tooltip = d3.select("#tooltip"),
+          tooltipPct = '';
+      if (data.properties.pctHomeownership) {
+        tooltipPct = Math.round(data.properties.pctHomeownership * 100) + '%'
+      } else if (data.properties.pctPoverty) {
+        tooltipPct = Math.round(data.properties.pctPoverty * 100) + '%'
+      } else if (data.properties.pctNonwhite) {
+        tooltipPct = Math.round(data.properties.pctNonwhite * 100) + '%'
+      }
+
+      console.log(tooltipPct);
+      // console.log(event.clientX)
+      // tooltip.html("<h1>"+tooltipPct+"</h1>");
+      // tooltip.style("left",event.clientX + "px")
+      // tooltip.style("top",event.clientY + "px")
+      // tooltip.style("transform","translate("+event.clientX+","+event.clientY+")")
+    }
+
+    function mouseout() {
+      // let tooltip = d3.select("#tooltip");
+      // tooltip.html("")
+      // tooltip.style("left","-10px")
+      // tooltip.style("top","-10px")
+    }
+  </script>
+
+  <script src="js/homeownership.js"></script>
+  <!-- <script src="js/poverty.js"></script>
+  <script src="js/nonwhite.js"></script> -->
+  <script src="js/boroughs.js"></script>
+
+</body>
+</html>
