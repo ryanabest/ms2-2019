@@ -6,16 +6,24 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700" rel="stylesheet">
   <style>
+    * {
+      font-family: "Roboto Mono", monospace;
+    }
+
     .text {
-      font-family: "Roboto Mono";
+      /* font-family: "Roboto Mono", monospace; */
       font-size: 1.2em;
     }
 
     #tooltip {
+      /* font-family: "Roboto Mono", monospace; */
       position: absolute;
-      /* transform: translate(10,10); */
-      background-color: black;
-      color: white;
+    }
+
+    #buttons {
+      position: fixed;
+      top: 10px;
+      left: 10px;
     }
 
     .active {
@@ -46,7 +54,7 @@
     <button id="button-d" onclick="setClip('d')" class="inactive">D</button>
     <button id="button-all" onclick="setClip('all')" class="inactive">All</button>
   </div>
-  <div id="tooltip"></div>
+  <!-- <div id="tooltip"></div> -->
   <div id="row">
     <div id="homeownership" class="cont">
       <div id="homeownership-legend" class="legend"></div>
@@ -59,6 +67,14 @@
     <div id="nonwhite" class="cont">
       <div id="nonwhite-legend" class="legend"></div>
       <div id="nonwhite-maps" class="maps"></div>
+    </div>
+    <div id="homevalue" class="cont">
+      <div id="homevalue-legend" class="legend"></div>
+      <div id="homevalue-maps" class="maps"></div>
+    </div>
+    <div id="mortgage" class="cont">
+      <div id="mortgage-legend" class="legend"></div>
+      <div id="mortgage-maps" class="maps"></div>
     </div>
   </div>
   <script>
@@ -76,7 +92,7 @@
         height = 730,
         legendSize = 35,
         legendBlocks = 10,
-        colors = {"homeownership":"#d95f02","poverty":"#1b9e77","nonwhite":"#7570b3"},
+        colors = {"homeownership":"#d95f02","poverty":"#1b9e77","nonwhite":"#7570b3","homevalue":"#e7298a","mortgage":"#a6761d"},
         projection = d3.geoMercator()
             .center([-73.81,40.82])
             .scale(60000)
@@ -89,7 +105,7 @@
          .attr("width", (legendSize + 6) * legendBlocks)
          .attr("height", legendSize * 5)
          .attr("id","svg-homeownership-legend")
-         .attr("class","svg-map");
+         .attr("class","svg-legend");
 
    let povertyLegend =  d3.select("#poverty-legend").append("svg")
          .attr("width", (legendSize + 6) * legendBlocks)
@@ -101,62 +117,19 @@
           .attr("width", (legendSize + 6) * legendBlocks)
           .attr("height", legendSize * 5)
           .attr("id","svg-nonwhite-legend")
-          .attr("class","svg-map");
+          .attr("class","svg-legend");
 
-    function drawLegend(svg) {
-      let g = d3.select("#" + svg + '-legend').append('g')
-                 .attr('class','g-legend'),
-          boxG = g.append('g').attr('class','g-boxes'),
-          textG = g.append('g').attr('class','g-text'),
-          map = svg.split('-')[1];
+    let homevalueLegend =  d3.select("#homevalue-legend").append("svg")
+          .attr("width", (legendSize + 6) * legendBlocks)
+          .attr("height", legendSize * 5)
+          .attr("id","svg-homevalue-legend")
+          .attr("class","svg-legend");
 
-      for (let i=0;i<legendBlocks;i++) {
-        boxG.append('rect')
-         .attr('fill',colors[map])
-         .attr('width',legendSize)
-         .attr('height',legendSize)
-         .attr('y',2*legendSize)
-         .attr('x',legendSize + (legendSize*i))
-         .attr('opacity',i/legendBlocks)
-      }
-
-      boxG.append('rect')
-       .attr('fill','none')
-       .attr('stroke','#000')
-       .attr('stroke-width',1)
-       .attr('width',legendSize*legendBlocks)
-       .attr('height',legendSize)
-       .attr('y',2*legendSize)
-       .attr('x',legendSize)
-       .attr('id','legend-border')
-
-      textG.append('text')
-       .text('Percent ' + map.charAt(0).toUpperCase() + map.slice(1))
-       .attr('text-anchor','middle')
-       .attr('y',legendSize*1.5)
-       .attr('x',((legendBlocks+2)*legendSize)/2)
-       .attr('class','text')
-
-      textG.append('text')
-        .text('0%')
-        .attr('text-anchor','middle')
-        .attr('y',legendSize*3.75)
-        .attr('x',legendSize*1.55)
-        .attr('class','text')
-
-      textG.append('text')
-        .text(function() {
-          if (map==='poverty') {
-            return '50%'
-          } else {
-            return '100%'
-          };
-        })
-        .attr('text-anchor','middle')
-        .attr('y',legendSize*3.75)
-        .attr('x',(legendSize*legendBlocks)+(legendSize*0.55))
-        .attr('class','text')
-    }
+    let mortgageLegend =  d3.select("#mortgage-legend").append("svg")
+          .attr("width", (legendSize + 6) * legendBlocks)
+          .attr("height", legendSize * 5)
+          .attr("id","svg-mortgage-legend")
+          .attr("class","svg-legend");
 
     function loadClips(svg) {
       d3.json('data/HOLC/HOLC_All.geojson').then(function(json) {
@@ -233,38 +206,9 @@
                       .attr('d',geoGenerator);
       })
     }
-
-    function mousemove(data) {
-      let tooltip = d3.select("#tooltip"),
-          tooltipPct = '';
-      if (data.properties.pctHomeownership) {
-        tooltipPct = Math.round(data.properties.pctHomeownership * 100) + '%'
-      } else if (data.properties.pctPoverty) {
-        tooltipPct = Math.round(data.properties.pctPoverty * 100) + '%'
-      } else if (data.properties.pctNonwhite) {
-        tooltipPct = Math.round(data.properties.pctNonwhite * 100) + '%'
-      }
-
-      console.log(tooltipPct);
-      // console.log(event.clientX)
-      // tooltip.html("<h1>"+tooltipPct+"</h1>");
-      // tooltip.style("left",event.clientX + "px")
-      // tooltip.style("top",event.clientY + "px")
-      // tooltip.style("transform","translate("+event.clientX+","+event.clientY+")")
-    }
-
-    function mouseout() {
-      // let tooltip = d3.select("#tooltip");
-      // tooltip.html("")
-      // tooltip.style("left","-10px")
-      // tooltip.style("top","-10px")
-    }
   </script>
 
   <script src="js/homeownership.js"></script>
-  <!-- <script src="js/poverty.js"></script>
-  <script src="js/nonwhite.js"></script> -->
-  <script src="js/boroughs.js"></script>
 
 </body>
 </html>
