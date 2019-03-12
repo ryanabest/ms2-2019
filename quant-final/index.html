@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quant</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="http://d3js.org/colorbrewer.v1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css" type="text/css" charset="utf-8">
+</head>
+<body>
+  <div id="row">
+    <div id="homeownership" class="cont">
+      <div id="homeownership-legend" class="legend"></div>
+      <div id="homeownership-maps" class="maps">
+        <svg id="svg-homeownership" class="map"></svg>
+      </div>
+    </div>
+  </div>
+  <script>
+  function setClip(grade) {
+    d3.selectAll('.tract-path')
+      .attr('clip-path','url("#redline-'+grade+'")')
+    d3.selectAll('button')
+      .attr('class','inactive')
+    d3.select('#button-'+grade)
+       .attr('class','active')
+  }
+  </script>
+  <script src="js/map.js"></script>
+
+</body>
+</html>

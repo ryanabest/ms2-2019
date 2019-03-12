@@ -1,0 +1,36 @@
+* {
+  font-family: "Roboto Mono", monospace;
+}
+
+svg.map {
+  /* background-color: #d7e5ed; */
+  background-color: #ECEDE5;
+}
+
+.text {
+  /* font-family: "Roboto Mono", monospace; */
+  font-size: 1.2em;
+}
+
+#tooltip {
+  /* font-family: "Roboto Mono", monospace; */
+  position: absolute;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
+
+.legend {
+  text-align: center;
+}
+
+#row {
+  display: flex;
+}
+
+.cont {
+  width: 635px;
+  margin: 0;
+}
