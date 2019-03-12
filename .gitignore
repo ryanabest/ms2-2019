@@ -6,3 +6,4 @@ qual/images/*
 qual/ZonePDFs/*
 !qual/ZonePDFs/All
 qual/zonePDFs_overlap/*
+quant/tableau/*
