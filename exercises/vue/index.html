@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Simple Vue Bar Chart</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- provided some basic styles, which elements are transitioned might be interesting to look at -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- D3 here -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- and Vue here -->
+</head>
+
+<body>
+  <!-- This is our container div, that we will reference in our script-->
+  <div id="bars">
+    <div id="center">
+      <h3>{{ chartTitle }}</h3>
+      <div>
+        <p>
+          Change the value of the first data point
+        </p>
+        <input class="red" type="number" v-model="data[0].val"/>
+      </div>
+      <svg :width="svg.width" :height="svg.height">
+        <g :transform="`translate(${margin.left},${margin.top})`">
+          <rect v-for="(element, index) in data"
+          :x="scale.x(element.name)"
+          :y="scale.y(element.val)"
+          :width="scale.x.bandwidth()"
+          :height="height - scale.y(element.val)"
+          :fill = "myFill(index)"
+        />
+        <g v-axis:x="scale" :transform="`translate(${0}, ${height})`"></g>
+        <g v-axis:y="scale"></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <!-- It’s important that your script is at the bottom of your body,
+  because we need the DOM to be ready-->
+  <script src="script.js"></script>
+</body>
+
+</html>
