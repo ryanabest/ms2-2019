@@ -1,0 +1,185 @@
+--------------------------------------------------------------------------------
+Codebook for NHGIS data file 'nhgis0006_ds92_1960_tract'
+--------------------------------------------------------------------------------
+ 
+Contents
+    - Data Summary
+    - Data Dictionary
+    - Citation and Use
+ 
+Additional documentation on NHGIS data sources is available at: 
+    https://www.nhgis.org/documentation/tabular-data 
+ 
+--------------------------------------------------------------------------------
+Data Summary
+--------------------------------------------------------------------------------
+ 
+Year:             1960
+Geographic level: Census Tract (by State--County)
+Dataset:          1960 Census: Population & Housing Data [Tracts: Major Cities & Surrounds]
+   NHGIS code:    1960_tPH
+   NHGIS ID:      ds92
+ 
+Tables:
+ 
+1. Total Persons
+   Universe:    Persons
+   Source code: NTSUP2
+   NHGIS code:  CA4
+ 
+2. Total Housing Units
+   Universe:    Housing Units
+   Source code: NTSUP3
+   NHGIS code:  CA5
+ 
+3. Owner-Occupied Housing Units Reporting Value
+   Universe:    Owner-Occupied Housing Units Reporting Value
+   Source code: NTSUP4
+   NHGIS code:  CA6
+ 
+4. Owner-Occupied Units Reporting Value by Value
+   Universe:    Owner-Occupied Units Reporting Value
+   Source code: NT13
+   NHGIS code:  B78
+ 
+5. Occupied Housing Units by Tenure
+   Universe:    Occupied Housing Units
+   Source code: NT58
+   NHGIS code:  B9O
+ 
+6. Total Nonwhite Population
+   Universe:    Nonwhite Persons
+   Source code: NT62
+   NHGIS code:  B9T
+ 
+7. Population by Race [from printed report]
+   Universe:    Persons
+   Source code: NBT5
+   NHGIS code:  B7B
+ 
+--------------------------------------------------------------------------------
+Data Dictionary
+--------------------------------------------------------------------------------
+ 
+Context Fields 
+    GISJOIN:     GIS Join Match Code
+    YEAR:        Data File Year
+    STATE:       State Name
+    STATEA:      State Code
+    COUNTY:      County Name
+    COUNTYA:     County Code
+    PRETRACTA:   Census Tract Prefix Code
+    TRACTA:      Census Tract Code
+    POSTTRCTA:   Census Tract Suffix Code
+    AREANAME:    Area Name
+ 
+Table 1:     Total Persons
+Universe:    Persons
+Source code: NTSUP2
+NHGIS code:  CA4
+    CA4001:      Total
+ 
+Table 2:     Total Housing Units
+Universe:    Housing Units
+Source code: NTSUP3
+NHGIS code:  CA5
+    CA5001:      Total
+ 
+Table 3:     Owner-Occupied Housing Units Reporting Value
+Universe:    Owner-Occupied Housing Units Reporting Value
+Source code: NTSUP4
+NHGIS code:  CA6
+    CA6001:      Total
+ 
+Table 4:     Owner-Occupied Units Reporting Value by Value
+Universe:    Owner-Occupied Units Reporting Value
+Source code: NT13
+NHGIS code:  B78
+    B78001:      Under $5,000
+    B78002:      $5,000 - $9,999
+    B78003:      $10,000 - $14,999
+    B78004:      $15,000 - $19,999
+    B78005:      $20,000 - $24,999
+    B78006:      $25,000 or more
+ 
+Table 5:     Occupied Housing Units by Tenure
+Universe:    Occupied Housing Units
+Source code: NT58
+NHGIS code:  B9O
+    B9O001:      Owner-occupied
+    B9O002:      Renter-occupied
+ 
+Table 6:     Total Nonwhite Population
+Universe:    Nonwhite Persons
+Source code: NT62
+NHGIS code:  B9T
+    B9T001:      Total
+ 
+Table 7:     Population by Race [from printed report]
+Universe:    Persons
+Source code: NBT5
+NHGIS code:  B7B
+    B7B001:      White
+    B7B002:      Negro
+    B7B003:      Other races
+ 
+--------------------------------------------------------------------------------
+Citation and Use of NHGIS Data
+--------------------------------------------------------------------------------
+ 
+All persons are granted a limited license to use this documentation and the
+accompanying data, subject to the following conditions:
+
+* REDISTRIBUTION: You will not redistribute the data without permission.
+
+  You may publish a subset of the data to meet journal requirements for accessing 
+  data related to a particular publication. Contact us for permission for any other 
+  redistribution; we will consider requests for free and commercial redistribution.
+
+* CITATION: You will cite NHGIS appropriately.
+
+    * Publications and research reports employing NHGIS data (either tabular or GIS) 
+      should include the following citation:
+
+        Steven Manson, Jonathan Schroeder, David Van Riper, and Steven Ruggles. 
+        IPUMS National Historical Geographic Information System: Version 13.0 
+        [Database]. Minneapolis: University of Minnesota. 2018. 
+        http://doi.org/10.18128/D050.V13.0
+
+    * Publications and research reports employing school attendance areas data 
+      (either tabular or GIS) must cite it appropriately. The citation should 
+      include the following:
+
+        The College of William and Mary and the Minnesota Population Center.
+        School Attendance Boundary Information System (SABINS): Version 1.0.
+        Minneapolis, MN: University of Minnesota 2011.
+
+    * For policy briefs, online resources, or articles in the popular press, we 
+      recommend that you cite the use of NHGIS data as follows:
+
+        IPUMS NHGIS, University of Minnesota, www.nhgis.org.
+
+    * If possible, citations involving school attendance areas should also include
+      the URL for the SABINS site:
+
+        http://www.sabinsdata.org/.
+
+These terms of use are a legally binding agreement. You can use the data only in 
+accordance with these terms, and any other use is a violation of the agreement. 
+Violations may result in revocation of the agreement and prohibition from using other 
+IPUMS data. If IPUMS or our partners are harmed from your violation, you are 
+responsible for all damages, including reasonable attorney's fees and expenses.
+        
+In addition, we request that users send us a copy of any publications, research
+reports, or educational material making use of the data or documentation.
+
+Send electronic material to: nhgis@umn.edu
+
+Printed matter should be sent to:
+
+    IPUMS NHGIS
+    Institute for Social Research and Data Innovation
+    University of Minnesota
+    50 Willey Hall
+    225 19th Ave S
+    Minneapolis, MN 55455

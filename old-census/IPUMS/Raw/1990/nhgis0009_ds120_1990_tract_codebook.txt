@@ -1,0 +1,223 @@
+--------------------------------------------------------------------------------
+Codebook for NHGIS data file 'nhgis0009_ds120_1990_tract'
+--------------------------------------------------------------------------------
+ 
+Contents
+    - Data Summary
+    - Data Dictionary
+    - Citation and Use
+ 
+Additional documentation on NHGIS data sources is available at: 
+    https://www.nhgis.org/documentation/tabular-data 
+ 
+--------------------------------------------------------------------------------
+Data Summary
+--------------------------------------------------------------------------------
+ 
+Year:             1990
+Geographic level: Census Tract (by State--County)
+Dataset:          1990 Census: STF 1 - 100% Data
+   NHGIS code:    1990_STF1
+   NHGIS ID:      ds120
+Breakdown(s):     Geographic Subarea:
+                     Total area (00)
+ 
+Tables:
+ 
+1. Persons
+   Universe:    Persons
+   Source code: NP1
+   NHGIS code:  ET1
+ 
+2. Race
+   Universe:    Persons
+   Source code: NP6
+   NHGIS code:  EUY
+ 
+3. Housing Units
+   Universe:    Housing units
+   Source code: NH1
+   NHGIS code:  ESA
+ 
+4. Occupancy Status
+   Universe:    Housing units
+   Source code: NH2
+   NHGIS code:  ESN
+ 
+5. Tenure
+   Universe:    Occupied housing units
+   Source code: NH3
+   NHGIS code:  ES1
+ 
+6. Value
+   Universe:    Specified owner-occupied housing units
+   Source code: NH23
+   NHGIS code:  ESR
+ 
+7. Median Value
+   Universe:    Specified owner-occupied housing units
+   Source code: NH23B
+   NHGIS code:  EST
+ 
+--------------------------------------------------------------------------------
+Data Dictionary
+--------------------------------------------------------------------------------
+ 
+Context Fields 
+        GISJOIN:     GIS Join Match Code
+        YEAR:        Data File Year
+        ANRCA:       Alaska Native Regional Corporation Code
+        RES_ONLYA:   American Indian Reservation [excluding trust lands] Code
+        TRUSTA:      American Indian Reservation [trust lands only] Code
+        AIANHHA:     American Indian Area/Alaska Native Area/Hawaiian Home Land Code
+        RES_TRSTA:   Reservation/Trust Lands Code
+        BLOCKA:      Block Code
+        BLCK_GRPA:   Block Group Code
+        TRACTA:      Census Tract Code
+        CDA:         Congressional District (101st) Code
+        C_CITYA:     Consolidated City Code
+        COUNTY:      County Name
+        COUNTYA:     County Code
+        CTY_SUBA:    County Subdivision Code
+        DIVISIONA:   Division Code
+        MSA_CMSAA:   Metropolitan Statistical Area/Consolidated Metropolitan Statistical Area Code
+        PLACEA:      Place Code
+        PMSAA:       Primary Metropolitan Statistical Area Code
+        REGIONA:     Region Code
+        STATE:       State Name
+        STATEA:      State Code
+        URBRURALA:   Urban/Rural Code
+        URB_AREAA:   Urban Area Code
+        CD103A:      Congressional District (103rd) Code
+        ANPSADPI:    Area Name/PSAD Term/Part Indicator
+ 
+Breakdown:
+    Geographic Subarea: Total area (00)
+ 
+    Table 1:     Persons
+    Universe:    Persons
+    Source code: NP1
+    NHGIS code:  ET1
+        ET1001:      Total
+ 
+    Table 2:     Race
+    Universe:    Persons
+    Source code: NP6
+    NHGIS code:  EUY
+        EUY001:      White
+        EUY002:      Black
+        EUY003:      American Indian, Eskimo, or Aleut
+        EUY004:      Asian or Pacific Islander
+        EUY005:      Other race
+ 
+    Table 3:     Housing Units
+    Universe:    Housing units
+    Source code: NH1
+    NHGIS code:  ESA
+        ESA001:      Total
+ 
+    Table 4:     Occupancy Status
+    Universe:    Housing units
+    Source code: NH2
+    NHGIS code:  ESN
+        ESN001:      Occupied
+        ESN002:      Vacant
+ 
+    Table 5:     Tenure
+    Universe:    Occupied housing units
+    Source code: NH3
+    NHGIS code:  ES1
+        ES1001:      Owner occupied
+        ES1002:      Renter occupied
+ 
+    Table 6:     Value
+    Universe:    Specified owner-occupied housing units
+    Source code: NH23
+    NHGIS code:  ESR
+        ESR001:      Less than $15,000
+        ESR002:      $15,000 to $19,999
+        ESR003:      $20,000 to $24,999
+        ESR004:      $25,000 to $29,999
+        ESR005:      $30,000 to $34,999
+        ESR006:      $35,000 to $39,999
+        ESR007:      $40,000 to $44,999
+        ESR008:      $45,000 to $49,999
+        ESR009:      $50,000 to $59,999
+        ESR010:      $60,000 to $74,999
+        ESR011:      $75,000 to $99,999
+        ESR012:      $100,000 to $124,999
+        ESR013:      $125,000 to $149,999
+        ESR014:      $150,000 to $174,999
+        ESR015:      $175,000 to $199,999
+        ESR016:      $200,000 to $249,999
+        ESR017:      $250,000 to $299,999
+        ESR018:      $300,000 to $399,999
+        ESR019:      $400,000 to $499,999
+        ESR020:      $500,000 or more
+ 
+    Table 7:     Median Value
+    Universe:    Specified owner-occupied housing units
+    Source code: NH23B
+    NHGIS code:  EST
+        EST001:      Median
+ 
+--------------------------------------------------------------------------------
+Citation and Use of NHGIS Data
+--------------------------------------------------------------------------------
+ 
+All persons are granted a limited license to use this documentation and the
+accompanying data, subject to the following conditions:
+
+* REDISTRIBUTION: You will not redistribute the data without permission.
+
+  You may publish a subset of the data to meet journal requirements for accessing 
+  data related to a particular publication. Contact us for permission for any other 
+  redistribution; we will consider requests for free and commercial redistribution.
+
+* CITATION: You will cite NHGIS appropriately.
+
+    * Publications and research reports employing NHGIS data (either tabular or GIS) 
+      should include the following citation:
+
+        Steven Manson, Jonathan Schroeder, David Van Riper, and Steven Ruggles. 
+        IPUMS National Historical Geographic Information System: Version 13.0 
+        [Database]. Minneapolis: University of Minnesota. 2018. 
+        http://doi.org/10.18128/D050.V13.0
+
+    * Publications and research reports employing school attendance areas data 
+      (either tabular or GIS) must cite it appropriately. The citation should 
+      include the following:
+
+        The College of William and Mary and the Minnesota Population Center.
+        School Attendance Boundary Information System (SABINS): Version 1.0.
+        Minneapolis, MN: University of Minnesota 2011.
+
+    * For policy briefs, online resources, or articles in the popular press, we 
+      recommend that you cite the use of NHGIS data as follows:
+
+        IPUMS NHGIS, University of Minnesota, www.nhgis.org.
+
+    * If possible, citations involving school attendance areas should also include
+      the URL for the SABINS site:
+
+        http://www.sabinsdata.org/.
+
+These terms of use are a legally binding agreement. You can use the data only in 
+accordance with these terms, and any other use is a violation of the agreement. 
+Violations may result in revocation of the agreement and prohibition from using other 
+IPUMS data. If IPUMS or our partners are harmed from your violation, you are 
+responsible for all damages, including reasonable attorney's fees and expenses.
+        
+In addition, we request that users send us a copy of any publications, research
+reports, or educational material making use of the data or documentation.
+
+Send electronic material to: nhgis@umn.edu
+
+Printed matter should be sent to:
+
+    IPUMS NHGIS
+    Institute for Social Research and Data Innovation
+    University of Minnesota
+    50 Willey Hall
+    225 19th Ave S
+    Minneapolis, MN 55455

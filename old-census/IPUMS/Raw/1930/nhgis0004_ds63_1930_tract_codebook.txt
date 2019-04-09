@@ -1,0 +1,171 @@
+--------------------------------------------------------------------------------
+Codebook for NHGIS data file 'nhgis0004_ds63_1930_tract'
+--------------------------------------------------------------------------------
+ 
+Contents
+    - Data Summary
+    - Data Dictionary
+    - Citation and Use
+ 
+Additional documentation on NHGIS data sources is available at: 
+    https://www.nhgis.org/documentation/tabular-data 
+ 
+--------------------------------------------------------------------------------
+Data Summary
+--------------------------------------------------------------------------------
+ 
+Year:             1930
+Geographic level: Census Tract (by State--County)
+Dataset:          1930 Census: Population & Housing Data [Tracts: Selected Areas in IN, MA, NY, OH & PA]
+   NHGIS code:    1930_tPH_Misc
+   NHGIS ID:      ds63
+ 
+Tables:
+ 
+1. Population
+   Universe:    Persons
+   Source code: NT1
+   NHGIS code:  BLW
+ 
+2. Race
+   Universe:    Persons
+   Source code: NT5
+   NHGIS code:  BM4
+ 
+3. Homes
+   Universe:    Homes
+   Source code: NT43
+   NHGIS code:  BMX
+ 
+4. Tenure
+   Universe:    Homes
+   Source code: NT44
+   NHGIS code:  BMY
+ 
+5. Home Value
+   Universe:    Owned Homes
+   Source code: NT45
+   NHGIS code:  BMZ
+ 
+--------------------------------------------------------------------------------
+Data Dictionary
+--------------------------------------------------------------------------------
+ 
+Context Fields 
+    GISJOIN:     GIS Join Match Code
+    YEAR:        Data File Year
+    STATE:       State Name
+    STATEA:      State Code
+    COUNTY:      County Name
+    COUNTYA:     County Code
+    PRETRACTA:   Census Tract Prefix Code
+    TRACTA:      Census Tract Code
+    POSTTRCTA:   Census Tract Suffix Code
+    AREANAME:    Area name
+ 
+Table 1:     Population
+Universe:    Persons
+Source code: NT1
+NHGIS code:  BLW
+    BLW001:      Total
+ 
+Table 2:     Race
+Universe:    Persons
+Source code: NT5
+NHGIS code:  BM4
+    BM4001:      White: Native white persons with native white parent
+    BM4002:      White: Native white persons with foreign born or mixed parents
+    BM4003:      White: Foreign born whites
+    BM4004:      Negro
+    BM4005:      Other races
+ 
+Table 3:     Homes
+Universe:    Homes
+Source code: NT43
+NHGIS code:  BMX
+    BMX001:      Total
+ 
+Table 4:     Tenure
+Universe:    Homes
+Source code: NT44
+NHGIS code:  BMY
+    BMY001:      Owned homes
+    BMY002:      Rented homes
+    BMY003:      Unknown
+ 
+Table 5:     Home Value
+Universe:    Owned Homes
+Source code: NT45
+NHGIS code:  BMZ
+    BMZ001:      Less than $1000
+    BMZ002:      $1000 to $1499
+    BMZ003:      $1500 to $1999
+    BMZ004:      $2000 to $2999
+    BMZ005:      $3000 to $4999
+    BMZ006:      $5000 to $7499
+    BMZ007:      $7500 to $9999
+    BMZ008:      $10000 to $14999
+    BMZ009:      $15000 to $19999
+    BMZ010:      $20000 and over
+    BMZ011:      Unknown
+ 
+--------------------------------------------------------------------------------
+Citation and Use of NHGIS Data
+--------------------------------------------------------------------------------
+ 
+All persons are granted a limited license to use this documentation and the
+accompanying data, subject to the following conditions:
+
+* REDISTRIBUTION: You will not redistribute the data without permission.
+
+  You may publish a subset of the data to meet journal requirements for accessing 
+  data related to a particular publication. Contact us for permission for any other 
+  redistribution; we will consider requests for free and commercial redistribution.
+
+* CITATION: You will cite NHGIS appropriately.
+
+    * Publications and research reports employing NHGIS data (either tabular or GIS) 
+      should include the following citation:
+
+        Steven Manson, Jonathan Schroeder, David Van Riper, and Steven Ruggles. 
+        IPUMS National Historical Geographic Information System: Version 13.0 
+        [Database]. Minneapolis: University of Minnesota. 2018. 
+        http://doi.org/10.18128/D050.V13.0
+
+    * Publications and research reports employing school attendance areas data 
+      (either tabular or GIS) must cite it appropriately. The citation should 
+      include the following:
+
+        The College of William and Mary and the Minnesota Population Center.
+        School Attendance Boundary Information System (SABINS): Version 1.0.
+        Minneapolis, MN: University of Minnesota 2011.
+
+    * For policy briefs, online resources, or articles in the popular press, we 
+      recommend that you cite the use of NHGIS data as follows:
+
+        IPUMS NHGIS, University of Minnesota, www.nhgis.org.
+
+    * If possible, citations involving school attendance areas should also include
+      the URL for the SABINS site:
+
+        http://www.sabinsdata.org/.
+
+These terms of use are a legally binding agreement. You can use the data only in 
+accordance with these terms, and any other use is a violation of the agreement. 
+Violations may result in revocation of the agreement and prohibition from using other 
+IPUMS data. If IPUMS or our partners are harmed from your violation, you are 
+responsible for all damages, including reasonable attorney's fees and expenses.
+        
+In addition, we request that users send us a copy of any publications, research
+reports, or educational material making use of the data or documentation.
+
+Send electronic material to: nhgis@umn.edu
+
+Printed matter should be sent to:
+
+    IPUMS NHGIS
+    Institute for Social Research and Data Innovation
+    University of Minnesota
+    50 Willey Hall
+    225 19th Ave S
+    Minneapolis, MN 55455

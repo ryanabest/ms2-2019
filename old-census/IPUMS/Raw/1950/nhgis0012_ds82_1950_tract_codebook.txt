@@ -1,0 +1,188 @@
+--------------------------------------------------------------------------------
+Codebook for NHGIS data file 'nhgis0012_ds82_1950_tract'
+--------------------------------------------------------------------------------
+ 
+Contents
+    - Data Summary
+    - Data Dictionary
+    - Citation and Use
+ 
+Additional documentation on NHGIS data sources is available at: 
+    https://www.nhgis.org/documentation/tabular-data 
+ 
+--------------------------------------------------------------------------------
+Data Summary
+--------------------------------------------------------------------------------
+ 
+Year:             1950
+Geographic level: Census Tract (by State--County)
+Dataset:          1950 Census: Population & Housing Data [Tracts: Major Cities & Surrounds]
+   NHGIS code:    1950_tPH_Major
+   NHGIS ID:      ds82
+ 
+Tables:
+ 
+1. Total Population
+   Universe:    Persons
+   Source code: NT1
+   NHGIS code:  BZ8
+ 
+2. Race
+   Universe:    Persons
+   Source code: NT2
+   NHGIS code:  B0J
+ 
+3. Total Dwelling Units
+   Universe:    Dwelling Units
+   Source code: NT28
+   NHGIS code:  B0S
+ 
+4. Tenure and Vacancy Status
+   Universe:    Dwelling Units
+   Source code: NT29
+   NHGIS code:  B0T
+ 
+5. Total Occupied Dwelling Units
+   Universe:    Occupied Dwelling Units
+   Source code: NT34
+   NHGIS code:  B0Z
+ 
+6. Value
+   Universe:    One-Dwelling-Unit Structures for Which Value Is Reported
+   Source code: NT41
+   NHGIS code:  B08
+ 
+7. Median Value
+   Universe:    One-Dwelling-Unit Structures for Which Value Is Reported
+   Source code: NT42
+   NHGIS code:  B09
+ 
+--------------------------------------------------------------------------------
+Data Dictionary
+--------------------------------------------------------------------------------
+ 
+Context Fields 
+    GISJOIN:     GIS Join Match Code
+    YEAR:        Data File Year
+    STATE:       State Name
+    STATEA:      State Code
+    COUNTY:      County Name
+    COUNTYA:     County Code
+    PRETRACTA:   Census Tract Prefix Code
+    TRACTA:      Census Tract Code
+    POSTTRCTA:   Census Tract Suffix Code
+    AREANAME:    Area Name
+ 
+Table 1:     Total Population
+Universe:    Persons
+Source code: NT1
+NHGIS code:  BZ8
+    BZ8001:      Total
+ 
+Table 2:     Race
+Universe:    Persons
+Source code: NT2
+NHGIS code:  B0J
+    B0J001:      White
+    B0J002:      Negro
+    B0J003:      Other nonwhite
+ 
+Table 3:     Total Dwelling Units
+Universe:    Dwelling Units
+Source code: NT28
+NHGIS code:  B0S
+    B0S001:      Total
+ 
+Table 4:     Tenure and Vacancy Status
+Universe:    Dwelling Units
+Source code: NT29
+NHGIS code:  B0T
+    B0T001:      Occupied: Owner occupied
+    B0T002:      Occupied: Renter occupied
+    B0T003:      Vacant: Vacant nonseasonal not dilapidated, for rent or sale
+    B0T004:      Vacant: Other vacant and nonresident
+ 
+Table 5:     Total Occupied Dwelling Units
+Universe:    Occupied Dwelling Units
+Source code: NT34
+NHGIS code:  B0Z
+    B0Z001:      Total
+ 
+Table 6:     Value
+Universe:    One-Dwelling-Unit Structures for Which Value Is Reported
+Source code: NT41
+NHGIS code:  B08
+    B08001:      Less than $3,000
+    B08002:      $3,000 to $3,999
+    B08003:      $4,000 to $,4,999
+    B08004:      $5,000 to $7,499
+    B08005:      $7,500 to $,9999
+    B08006:      $10,000 to $14,999
+    B08007:      $15,000 or more
+ 
+Table 7:     Median Value
+Universe:    One-Dwelling-Unit Structures for Which Value Is Reported
+Source code: NT42
+NHGIS code:  B09
+    B09001:      Median value
+ 
+--------------------------------------------------------------------------------
+Citation and Use of NHGIS Data
+--------------------------------------------------------------------------------
+ 
+All persons are granted a limited license to use this documentation and the
+accompanying data, subject to the following conditions:
+
+* REDISTRIBUTION: You will not redistribute the data without permission.
+
+  You may publish a subset of the data to meet journal requirements for accessing 
+  data related to a particular publication. Contact us for permission for any other 
+  redistribution; we will consider requests for free and commercial redistribution.
+
+* CITATION: You will cite NHGIS appropriately.
+
+    * Publications and research reports employing NHGIS data (either tabular or GIS) 
+      should include the following citation:
+
+        Steven Manson, Jonathan Schroeder, David Van Riper, and Steven Ruggles. 
+        IPUMS National Historical Geographic Information System: Version 13.0 
+        [Database]. Minneapolis: University of Minnesota. 2018. 
+        http://doi.org/10.18128/D050.V13.0
+
+    * Publications and research reports employing school attendance areas data 
+      (either tabular or GIS) must cite it appropriately. The citation should 
+      include the following:
+
+        The College of William and Mary and the Minnesota Population Center.
+        School Attendance Boundary Information System (SABINS): Version 1.0.
+        Minneapolis, MN: University of Minnesota 2011.
+
+    * For policy briefs, online resources, or articles in the popular press, we 
+      recommend that you cite the use of NHGIS data as follows:
+
+        IPUMS NHGIS, University of Minnesota, www.nhgis.org.
+
+    * If possible, citations involving school attendance areas should also include
+      the URL for the SABINS site:
+
+        http://www.sabinsdata.org/.
+
+These terms of use are a legally binding agreement. You can use the data only in 
+accordance with these terms, and any other use is a violation of the agreement. 
+Violations may result in revocation of the agreement and prohibition from using other 
+IPUMS data. If IPUMS or our partners are harmed from your violation, you are 
+responsible for all damages, including reasonable attorney's fees and expenses.
+        
+In addition, we request that users send us a copy of any publications, research
+reports, or educational material making use of the data or documentation.
+
+Send electronic material to: nhgis@umn.edu
+
+Printed matter should be sent to:
+
+    IPUMS NHGIS
+    Institute for Social Research and Data Innovation
+    University of Minnesota
+    50 Willey Hall
+    225 19th Ave S
+    Minneapolis, MN 55455
