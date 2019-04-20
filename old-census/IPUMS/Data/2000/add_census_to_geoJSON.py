@@ -82,6 +82,7 @@ def create_geoJSON(year):
     dat2_df = pd.read_csv('../../Raw/'+year+'/nhgis0010_ds151_'+year+'_tract.csv')
     dat_df = dat1_df.merge(dat2_df,how='outer',on='GISJOIN')
 
+    dat_df = dat_df.loc[dat_df['COUNTY_x'] == 'New York',:] ## Brooklyn
     # print(dat1_df.shape,dat2_df.shape)
     # pprint(dat_df['GISJOIN'].describe())
     # pprint(dat_df.shape)
@@ -101,35 +102,40 @@ def create_geoJSON(year):
     dat_df['Median Home Value Denominator'] = dat_df['GB5001']+dat_df['GB5002']+dat_df['GB5003']+dat_df['GB5004']+dat_df['GB5005']+dat_df['GB5006']+dat_df['GB5007']+dat_df['GB5008']+dat_df['GB5009']+dat_df['GB5010']+dat_df['GB5011']+dat_df['GB5012']+dat_df['GB5013']+dat_df['GB5014']+dat_df['GB5015']+dat_df['GB5016']+dat_df['GB5017']+dat_df['GB5018']+dat_df['GB5019']+dat_df['GB5020']+dat_df['GB5021']+dat_df['GB5022']+dat_df['GB5023']+dat_df['GB5024']
     dat_df['Median Home Value Est'] = dat_df.apply(est_median,axis=1) ## estimate based on distribution across discrete categories
     dat_df['Median Home Value 2010'] = dat_df['Median Home Value']*inflation[year]
+
+    dat_df.loc[dat_df['Median Home Value'] == 0,'Median Home Value'] = np.nan
+    pprint(dat_df[['Median Home Value','Median Home Value Est']].describe())
+    print(dat_df.shape)
+
     # dat_df['hv_diff'] = dat_df['Median Home Value'] - dat_df['Median Home Value Est']
     # print(dat_df['hv_diff'].describe())
     # pprint(dat_df[['Percent White','Percent Non-White','Percent Black','Homeownership Rate','Median Home Value','Median Home Value 2010']].head())
 
-    pprint(dat_df.shape)
-    dat_df = dat_df.loc[dat_df['Total Population']>0,:] ## Remove all tracts without any population
-    dat_df =dat_df[['GISJOIN','Total Population','Percent Non-White','Percent White','Percent Black','Homeownership Rate','Median Home Value Denominator','Median Home Value','Median Home Value 2010']]
-    dat_df.loc[dat_df['Median Home Value']==0,['Median Home Value','Median Home Value 2010']] = np.nan
-    # pprint(dat_df.loc[dat_df['Median Home Value'] == 0,:].describe())
-    # pprint(dat_df.describe())
-    pprint(dat_df.shape)
-    prop_df = gis_df.merge(dat_df,how='inner',on='GISJOIN')
-
-    features = []
-
-    for tract in tracts:
-        if len(prop_df.loc[prop_df['GISJOIN'] == tract['properties']['GISJOIN']]) > 0:
-            properties = prop_df.loc[prop_df['GISJOIN'] == tract['properties']['GISJOIN']].to_dict('records')[0]
-
-            feature = {
-                 'geometry':tract['geometry']
-                ,'properties':properties
-                ,'type':'Feature'
-            }
-            features.append(feature)
-
-    geoJSON_export = {"type":"FeatureCollection","features":features}
-    # pprint(type(geoJSON_export))
-    with open(year+'.json','w') as f:
-        json.dump(geoJSON_export,f)
+    # pprint(dat_df.shape)
+    # dat_df = dat_df.loc[dat_df['Total Population']>0,:] ## Remove all tracts without any population
+    # dat_df =dat_df[['GISJOIN','Total Population','Percent Non-White','Percent White','Percent Black','Homeownership Rate','Median Home Value Denominator','Median Home Value','Median Home Value 2010']]
+    # dat_df.loc[dat_df['Median Home Value']==0,['Median Home Value','Median Home Value 2010']] = np.nan
+    # # pprint(dat_df.loc[dat_df['Median Home Value'] == 0,:].describe())
+    # # pprint(dat_df.describe())
+    # pprint(dat_df.shape)
+    # prop_df = gis_df.merge(dat_df,how='inner',on='GISJOIN')
+    #
+    # features = []
+    #
+    # for tract in tracts:
+    #     if len(prop_df.loc[prop_df['GISJOIN'] == tract['properties']['GISJOIN']]) > 0:
+    #         properties = prop_df.loc[prop_df['GISJOIN'] == tract['properties']['GISJOIN']].to_dict('records')[0]
+    #
+    #         feature = {
+    #              'geometry':tract['geometry']
+    #             ,'properties':properties
+    #             ,'type':'Feature'
+    #         }
+    #         features.append(feature)
+    #
+    # geoJSON_export = {"type":"FeatureCollection","features":features}
+    # # pprint(type(geoJSON_export))
+    # with open(year+'.json','w') as f:
+    #     json.dump(geoJSON_export,f)
 
 create_geoJSON('2000')

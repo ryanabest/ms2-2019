@@ -82,6 +82,7 @@ def create_geoJSON(year):
     dat2_df = pd.read_csv('../../Raw/'+year+'/nhgis0011_ds176_'+year+'5_2010_tract.csv', encoding = "ISO-8859-1")
     dat_df = dat1_df.merge(dat2_df,how='outer',on='GISJOIN')
 
+    dat_df = dat_df.loc[dat_df['COUNTY_x'] == 'New York County',:] ## Brooklyn
     # print(dat1_df.shape,dat2_df.shape)
     # pprint(dat_df['GISJOIN'].describe())
     # pprint(dat_df.shape)
@@ -103,6 +104,7 @@ def create_geoJSON(year):
     dat_df['Median Home Value 2010'] = dat_df['Median Home Value']*inflation[year]
     dat_df['hv_diff'] = dat_df['Median Home Value'] - dat_df['Median Home Value Est']
     pprint(dat_df[['Median Home Value','Median Home Value Est']].describe())
+    print(dat_df.shape)
     # print(dat_df['hv_diff'].describe())
     # pprint(dat_df[['Percent White','Percent Non-White','Percent Black','Homeownership Rate','Median Home Value','Median Home Value 2010']].head())
 
