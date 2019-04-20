@@ -8,7 +8,7 @@ function loadMap(map,name) {
                .enter()
                .append('path')
                .attr('d',geoGenerator)
-               .attr("stroke-width",2)
+               .attr("stroke-width",0)
                .attr('fill',function(d) {
                  if (d.properties.holc_grade === 'A') {
                    return '#8C9F5B'
