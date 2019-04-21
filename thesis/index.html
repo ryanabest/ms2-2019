@@ -15,69 +15,136 @@
   </section>
 
   <main>
-    <section id="scrolly">
+    <section id="scrolly" class="scrolly-block">
       <figure>
         <svg id="figureSVG"></svg>
   		</figure>
       <article>
-  			<div class='step redline' data-step='1'>
-  				<p>SHOW BOROUGHS ONLY</p>
-  			</div>
-  			<div class='step redline' data-step='2'>
+        <div class='step redline step-display-none' id="explore" data-step='10'>
+          <p>EXPLORE</p>
+          <div class='row'>
+            <div class='col one-third'></div>
+            <div class='col one-third'></div>
+            <div class='col one-third'></div>
+          </div>
+          <div class='row'>
+            <div class='col left'><h2>PCT WHITE</h2></div>
+            <div class='col right'><svg class='exploreSparkSVG pctWhite'></svg></div>
+          </div>
+          <div class='row'>
+            <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+            <div class='col right'><svg class='exploreSparkSVG pctHomeownership'></svg></div>
+          </div>
+          <div class='row'>
+            <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+            <div class='col right'><svg class='exploreSparkSVG medianHomeValue2010'></svg></div>
+          </div>
+          <button id='hide-explore'>HIDE EXPLORE</button>
+        </div>
+  			<div class='step narrow-left redline' data-step='1'>
   				<p>SHOW RED</p>
   			</div>
-  			<div class='step redline' data-step='3'>
+  			<div class='step narrow-left redline' data-step='2'>
   				<p>SHOW GREEN</p>
   			</div>
-  			<div class='step redline' data-step='4'>
+  			<div class='step narrow-left redline' data-step='3'>
   				<p>SHOW BLUE AND YELLOW</p>
   			</div>
-        <div class='step redline chapter-end' data-step='5'>
+        <div class='step narrow-left redline section-end' data-step='4'>
   				<p>SHOW ALL</p>
   			</div>
-        <div class='step wide-right' data-step='6' id='upperEastSide-harlem'>
-          <div class='wide-right-column'>
-    				<p>SHOW UES -- HARLEM</p>
-            <svg class='sparkSVG pctWhite'></svg>
-            <svg class='sparkSVG pctHomeownership'></svg>
-            <svg class='sparkSVG medianHomeValue2010'></svg>
+        <div class='step wide-right section-end' data-step='5' id='manhattan'>
+          <div class='wide-right-step'>
+    				<p>SHOW MANHATTAN</p>
+            <div class='row'>
+              <div class='col left'><h2>PCT WHITE</h2></div>
+              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+            </div>
             <p>Short explanation of the takeaway from this comparison. Pull quotes from Area descriptions? Images of homes? Non-viz qualitative assets that give context to the comparisons above? Maybe also add additional societal context (Daniel’s suggestion).</p>
           </div>
   			</div>
-        <div class='step wide-right chapter-end' data-step='7'>
-          <h1>TEST</h1>
-        </div>
-        <div class='step wide-right' data-step='8' id='littleNeck-stAlbans'>
-          <div class='wide-right-column'>
-            <p>SHOW LITTLE NECK -- ST ALBANS</p>
-            <svg class='sparkSVG pctWhite'></svg>
-            <svg class='sparkSVG pctHomeownership'></svg>
-            <svg class='sparkSVG medianHomeValue2010'></svg>
+        <div class='step wide-right section-end' data-step='6' id='queens'>
+          <div class='wide-right-step'>
+            <p>SHOW QUEENS</p>
+            <div class='row'>
+              <div class='col left'><h2>PCT WHITE</h2></div>
+              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+            </div>
           </div>
         </div>
-        <div class='step wide-right chapter-end' data-step='9'>
-          <h1>TEST</h1>
-        </div>
-        <div class='step wide-right' data-step='10' id='todtHill-newBrighton'>
-          <div class='wide-right-column'>
-            <svg class='sparkSVG pctWhite'></svg>
-            <svg class='sparkSVG pctHomeownership'></svg>
-            <svg class='sparkSVG medianHomeValue2010'></svg>
+        <div class='step wide-right section-end' data-step='7' id='staten'>
+          <div class='wide-right-step'>
+            <p>SHOW STATEN</p>
+            <div class='row'>
+              <div class='col left'><h2>PCT WHITE</h2></div>
+              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+            </div>
           </div>
         </div>
-        <div class='step wide-right chapter-end' data-step='11'>
-          <h1>TEST</h1>
-        </div>
-        <div class='step wide-right' data-step='12' id='brooklyn'>
-          <div class='wide-right-column'>
-            <svg class='sparkSVG pctWhite'></svg>
-            <svg class='sparkSVG pctHomeownership'></svg>
-            <svg class='sparkSVG medianHomeValue2010'></svg>
+        <div class='step wide-right section-end' data-step='8' id='brooklyn'>
+          <div class='wide-right-step'>
+            <p>SHOW BROOKLYN</p>
+            <div class='row'>
+              <div class='col left'><h2>PCT WHITE</h2></div>
+              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+            </div>
           </div>
         </div>
-        <div class='step wide-right chapter-end' data-step='13'>
-          <h1>TEST</h1>
+        <div class='step wide-right section-end' data-step='9' id='bronx'>
+          <div class='wide-right-step'>
+            <p>SHOW BRONX</p>
+            <div class='row'>
+              <div class='col left'><h2>PCT WHITE</h2></div>
+              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+            </div>
+            <div class='row'>
+              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+            </div>
+          </div>
         </div>
+        <div class='step full-page'>
+          <p>CONCLUSION</p>
+          <button id='show-explore'>GO TO EXPLORE</button>
+        </div>
+        <!-- <div class='step full-page' data-step='10'>
+        </div> -->
 		  </article>
     </section>
   </main>
@@ -91,28 +158,37 @@
   var step = article.selectAll('.step');
   var figureSvg = figure.select('#figureSVG');
 
-
   var figureSvgWidth  = parseInt(figureSvg.style('width')),
       figureSvgHeight = parseInt(figureSvg.style('height'));
 
+  var gridLines = 6;
   // Initiating the projection and groGenerator variables with dummy variables
   // These will be updated with bounding box in map.js
   var projection = d3.geoMercator().scale(1).translate([0,0]),
 	    geoGenerator = d3.geoPath().projection(projection);
 
   // Neighborhood Comparison Lists
-  var harlem = ['Manhattan_D19','Manhattan_D20','Manhattan_D21','Manhattan_D22','Manhattan_D23','Manhattan_D24','Manhattan_D25','Manhattan_D26'],
-      upperEastSide = ['Manhattan_A3','Manhattan_A4','Manhattan_A5','Manhattan_A6','Manhattan_A7'],
-      littleNeck = ['Queens_B12','Queens_B13'],
-      stAlbans = ['Queens_C78','Queens_C79','Queens_C80','Queens_C81','Queens_C83','Queens_C84'],
-      redHook = ['Brooklyn_A1'],
-      flatlands = ['Brooklyn_B14','Brooklyn_B15'],
-      todtHill = ['StatenIsland_A3'],
-      newBrighton = ['StatenIsland_D2','StatenIsland_D3'],
-      eastYonkers = ['LowerWestchesterCo_A1','LowerWestchesterCo_A3','LowerWestchesterCo_A6','LowerWestchesterCo_A7','LowerWestchesterCo_A8'],
-      westYonkers = ['LowerWestchesterCo_D5','LowerWestchesterCo_D6','LowerWestchesterCo_D7'],
-      brightonBeach = ['Brooklyn_C24'],
-      brooklynHeights = ['Brooklyn_B1'];
+  var
+      // MAHNATTAN
+       harlem = ['Manhattan_D19','Manhattan_D20','Manhattan_D21','Manhattan_D22','Manhattan_D23','Manhattan_D24','Manhattan_D25','Manhattan_D26']
+      ,upperEastSide = ['Manhattan_A3','Manhattan_A4','Manhattan_A5','Manhattan_A6','Manhattan_A7']
+      // QUEENS
+      ,littleNeck = ['Queens_B12','Queens_B13']
+      ,stAlbans = ['Queens_C78','Queens_C79','Queens_C80','Queens_C81','Queens_C83','Queens_C84']
+      ,brookvilleRosedale = ['Queens_D23','Queens_D26']
+      // STATEN
+      ,todtHill = ['StatenIsland_A3']
+      ,newBrighton = ['StatenIsland_D2','StatenIsland_D3']
+      // BROOKLYN
+      ,brightonBeach = ['Brooklyn_C24']
+      ,crownHeights = ['Brooklyn_B4']
+      // BRONX
+      ,countryClub = ['Bronx_C13']
+      ,fordham = ['Bronx_B5','Bronx_B8']
+      ;
+
+      // eastYonkers = ['LowerWestchesterCo_A1','LowerWestchesterCo_A3','LowerWestchesterCo_A6','LowerWestchesterCo_A7','LowerWestchesterCo_A8'],
+      // westYonkers = ['LowerWestchesterCo_D5','LowerWestchesterCo_D6','LowerWestchesterCo_D7'],
   </script>
 
   <script src="js/map.js"></script> <!-- This script draws my boroughs, holc zones, and initial dots -->

@@ -1,3 +1,11 @@
+/************* all ******************/
+body, main, figure, #scrolly {
+  background-color: #24272E;
+  padding: none;
+  margin: none;
+}
+/************************************/
+
 /************ intro *****************/
 #intro {
   height: 50vh;
@@ -60,6 +68,19 @@ path.show {
   opacity: 1;
 }
 
+path.light {
+  opacity: 0.5;
+}
+
+path.light:hover {
+  opacity:1;
+}
+
+path.hover-path {
+  opacity: 1;
+}
+
+
 path {
   transition: opacity 0.2s ease-in-out;
 }
@@ -70,38 +91,97 @@ path {
 /************************************/
 
 /******** Comp spark lines **********/
-svg.sparkSVG {
-  background: white;
+svg.sparkSVG, svg.exploreSparkSVG {
+  background: #24272E;
+  /* background: white; */
+  width: 100%;
+  margin: 1rem auto;
 }
 
-.sparkLine {
+.sparkLine, .exploreSparkLine {
   fill: none;
   stroke-width: 4;
   /* stroke: #000; */
 }
 
+/* grid */
+.grid-line, .explore-grid-line {
+  stroke: #3E4450;
+}
+/************************************/
+
+/********** COLUMN LAYOUT ***********/
+/* https://www.w3schools.com/howto/howto_css_three_columns.asp */
+.col {
+  float: left;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+
+.col h2 {
+  text-align: right;
+  padding: 0 1rem;
+  margin: 1rem auto;
+  font-size: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: flex;
+  clear: both;
+}
 /************************************/
 
 /* Scrollytelling */
 #scrolly {
   position: relative;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
-  background-color: #f3f3f3;
-  padding: 1rem;
 }
 
-/* #scrolly > * {
+.step-display-none {
+  display: none;
+}
+
+.scrolly-block {
+  display: block;
+}
+
+.scrolly-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.scrolly-flex > * {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-} */
+}
+
+.scrolly-flex > article {
+  max-width: 35%;
+}
+
+#explore {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  padding: 0 2rem;
+}
 
 article {
   position: relative;
 	padding: 0 1rem;
-  transform: translateY(-70vh);
+  /* transform: translateY(-70vh); */
 }
 
 figure {
@@ -117,15 +197,15 @@ figure {
 }
 
 .step {
-  width: 35%;
 	/* margin: 0 auto 2rem auto; */
-	background-color: #3b3b3b;
+	/* border: 2px solid #fff; */
+  background-color: #24272E;
 	color: #fff;
 }
 
 .step.is-active {
 	/* background-color: goldenrod; */
-	color: #3b3b3b;
+	/* color: #3b3b3b; */
 }
 
 .step p {
@@ -134,17 +214,21 @@ figure {
 	font-size: 1.5rem;
 }
 
-/*********** non-viz comp ************/
+/*********** narratives ************/
 
-.wide-right {
-  width: 80%;
-  left: 20%;
-  position: relative;
-  /* height: 100vh; */
-  background-color: rgba(0,0,0,.1);
+.narrow-left {
+  width: 35%;
 }
 
-.wide-right-column {
+.wide-right {
+  width: 70%;
+  left: 30%;
+  position: relative;
+  /* height: 100vh; */
+  /* background-color: rgba(0,0,0); */
+}
+
+.wide-right-step {
   width: 80%;
   max-width: 700px;
   margin: 0 auto;
@@ -154,8 +238,13 @@ figure {
   height: 100vh;
 }
 
-.chapter-end {
+.section-end {
   margin-bottom: 80vh;
+}
+
+.full-page {
+  width: 100%;
+  height: 100vh;
 }
 
 figure {
@@ -164,14 +253,6 @@ figure {
 
 article {
   transition: width 0.5s ease-in-out;
-}
-
-/************************************/
-
-/*********** spark lines *************/
-
-.sparkSVG {
-  width: 100%;
 }
 
 /************************************/
