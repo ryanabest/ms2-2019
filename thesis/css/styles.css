@@ -110,10 +110,29 @@ svg.sparkSVG, svg.exploreSparkSVG {
 }
 /************************************/
 
+/*********** COMPARISONS ************/
+.text-a {
+  color: #8C9F5B;
+}
+.text-b {
+  color: #8AA1AB;
+}
+.text-c {
+  color: #D6B64C;
+}
+.text-d {
+  color: #CC6D7B;
+}
+/************************************/
+
 /********** COLUMN LAYOUT ***********/
 /* https://www.w3schools.com/howto/howto_css_three_columns.asp */
 .col {
   float: left;
+}
+
+.one-third {
+  width: 33.3%;
 }
 
 .left {
@@ -126,9 +145,9 @@ svg.sparkSVG, svg.exploreSparkSVG {
 
 .col h2 {
   text-align: right;
-  padding: 0 1rem;
-  margin: 1rem auto;
-  font-size: 15px;
+  padding-right: 1rem;
+  margin-top: 1rem  ;
+  font-size: 12px;
 }
 
 /* Clear floats after the columns */
@@ -137,6 +156,13 @@ svg.sparkSVG, svg.exploreSparkSVG {
   display: flex;
   clear: both;
 }
+
+/* neighborhood icons */
+.row img {
+  max-height: 110px;
+  margin: 0 1rem;
+}
+
 /************************************/
 
 /* Scrollytelling */
@@ -214,7 +240,7 @@ figure {
 	font-size: 1.5rem;
 }
 
-/*********** narratives ************/
+/*********** SCROLLY (STEPS) ************/
 
 .narrow-left {
   width: 35%;
@@ -230,7 +256,7 @@ figure {
 
 .wide-right-step {
   width: 80%;
-  max-width: 700px;
+  /* max-width: 700px; */
   margin: 0 auto;
 }
 
@@ -256,3 +282,7 @@ article {
 }
 
 /************************************/
+
+* {
+  font-family: 'Taviraj', sans-serif;
+}

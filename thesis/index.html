@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="packages/scrollama.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Taviraj|Work+Sans" rel="stylesheet">
 </head>
 
 <body>
@@ -41,104 +42,154 @@
           </div>
           <button id='hide-explore'>HIDE EXPLORE</button>
         </div>
-  			<div class='step narrow-left redline' data-step='1'>
-  				<p>SHOW RED</p>
-  			</div>
-  			<div class='step narrow-left redline' data-step='2'>
-  				<p>SHOW GREEN</p>
-  			</div>
-  			<div class='step narrow-left redline' data-step='3'>
-  				<p>SHOW BLUE AND YELLOW</p>
-  			</div>
-        <div class='step narrow-left redline section-end' data-step='4'>
-  				<p>SHOW ALL</p>
-  			</div>
-        <div class='step wide-right section-end' data-step='5' id='manhattan'>
-          <div class='wide-right-step'>
-    				<p>SHOW MANHATTAN</p>
-            <div class='row'>
-              <div class='col left'><h2>PCT WHITE</h2></div>
-              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+        <section id='redline-explainer'>
+          <div class='step narrow-left redline' data-step='1'>
+    				<p>SHOW RED</p>
+    			</div>
+    			<div class='step narrow-left redline' data-step='2'>
+    				<p>SHOW GREEN</p>
+    			</div>
+    			<div class='step narrow-left redline' data-step='3'>
+    				<p>SHOW BLUE AND YELLOW</p>
+    			</div>
+          <div class='step narrow-left redline section-end' data-step='4'>
+    				<p>SHOW ALL</p>
+    			</div>
+        </section>
+        <section id='comparisons'>
+          <div class='step wide-right section-end' data-step='5' id='manhattan'>
+            <div class='wide-right-step'>
+              <div class='row'>
+                <div class='col one-third'><p></div>
+                <div class='col one-third'>
+                  <p class='text-a'>Upper East Side</p>
+                  <img src='img/upperEastSide.svg'/>
+                </div>
+                <div class='col one-third'>
+                  <p class='text-d'>Harlem</p>
+                  <img src='img/harlem.svg'/>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT WHITE</h2></div>
+                <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+                <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+                <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+              </div>
+              <p>Short explanation of the takeaway from this comparison. Pull quotes from Area descriptions? Images of homes? Non-viz qualitative assets that give context to the comparisons above?</p>
             </div>
-            <div class='row'>
-              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
-              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
-              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
-            </div>
-            <p>Short explanation of the takeaway from this comparison. Pull quotes from Area descriptions? Images of homes? Non-viz qualitative assets that give context to the comparisons above? Maybe also add additional societal context (Daniel’s suggestion).</p>
-          </div>
-  			</div>
-        <div class='step wide-right section-end' data-step='6' id='queens'>
-          <div class='wide-right-step'>
-            <p>SHOW QUEENS</p>
-            <div class='row'>
-              <div class='col left'><h2>PCT WHITE</h2></div>
-              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
-              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
-              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
-            </div>
-          </div>
-        </div>
-        <div class='step wide-right section-end' data-step='7' id='staten'>
-          <div class='wide-right-step'>
-            <p>SHOW STATEN</p>
-            <div class='row'>
-              <div class='col left'><h2>PCT WHITE</h2></div>
-              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
-              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
-              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
-            </div>
-          </div>
-        </div>
-        <div class='step wide-right section-end' data-step='8' id='brooklyn'>
-          <div class='wide-right-step'>
-            <p>SHOW BROOKLYN</p>
-            <div class='row'>
-              <div class='col left'><h2>PCT WHITE</h2></div>
-              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
-              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
-              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+    			</div>
+          <div class='step wide-right section-end' data-step='6' id='queens'>
+            <div class='wide-right-step'>
+              <p>SHOW QUEENS</p>
+              <div class='row'>
+                <div class='col one-third'><p><br></p></div>
+                <div class='col one-third'>
+                  <img src='img/littleNeck.svg'/>
+                </div>
+                <div class='col one-third'>
+                  <img src='img/brookvilleRosedale.svg'/>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT WHITE</h2></div>
+                <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+                <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+                <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class='step wide-right section-end' data-step='9' id='bronx'>
-          <div class='wide-right-step'>
-            <p>SHOW BRONX</p>
-            <div class='row'>
-              <div class='col left'><h2>PCT WHITE</h2></div>
-              <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
-              <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
-            </div>
-            <div class='row'>
-              <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
-              <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+          <div class='step wide-right section-end' data-step='7' id='staten'>
+            <div class='wide-right-step'>
+              <p>SHOW STATEN</p>
+              <div class='row'>
+                <div class='col one-third'><p><br></p></div>
+                <div class='col one-third'>
+                  <img src='img/todtHill.svg'/>
+                </div>
+                <div class='col one-third'>
+                  <img src='img/newBrighton.svg'/>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT WHITE</h2></div>
+                <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+                <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+                <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+              </div>
             </div>
           </div>
-        </div>
+          <div class='step wide-right section-end' data-step='8' id='brooklyn'>
+            <div class='wide-right-step'>
+              <p>SHOW BROOKLYN</p>
+              <div class='row'>
+                <div class='col one-third'><p><br></p></div>
+                <div class='col one-third'>
+                  <img src='img/brightonBeach.svg'/>
+                </div>
+                <div class='col one-third'>
+                  <img src='img/crownHeights.svg'/>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT WHITE</h2></div>
+                <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+                <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+                <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+              </div>
+            </div>
+          </div>
+          <div class='step wide-right section-end' data-step='9' id='bronx'>
+            <div class='wide-right-step'>
+              <p>SHOW BRONX</p>
+              <div class='row'>
+                <div class='col one-third'><p><br></p></div>
+                <div class='col one-third'>
+                  <img src='img/countryClub.svg'/>
+                </div>
+                <div class='col one-third'>
+                  <img src='img/fordham.svg'/>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT WHITE</h2></div>
+                <div class='col right'><svg class='sparkSVG pctWhite'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>PCT HOMEOWNERSHIP</h2></div>
+                <div class='col right'><svg class='sparkSVG pctHomeownership'></svg></div>
+              </div>
+              <div class='row'>
+                <div class='col left'><h2>HOME VALUE<br/>(2010 DOLLARS)</h2></div>
+                <div class='col right'><svg class='sparkSVG medianHomeValue2010'></svg></div>
+              </div>
+            </div>
+          </div>
+        </section>
         <div class='step full-page'>
           <p>CONCLUSION</p>
           <button id='show-explore'>GO TO EXPLORE</button>
@@ -174,7 +225,7 @@
       ,upperEastSide = ['Manhattan_A3','Manhattan_A4','Manhattan_A5','Manhattan_A6','Manhattan_A7']
       // QUEENS
       ,littleNeck = ['Queens_B12','Queens_B13']
-      ,stAlbans = ['Queens_C78','Queens_C79','Queens_C80','Queens_C81','Queens_C83','Queens_C84']
+      // ,stAlbans = ['Queens_C78','Queens_C79','Queens_C80','Queens_C81','Queens_C83','Queens_C84']
       ,brookvilleRosedale = ['Queens_D23','Queens_D26']
       // STATEN
       ,todtHill = ['StatenIsland_A3']

@@ -70,7 +70,7 @@ Promise.all([
   	scroller.setup({
   		step: '#scrolly article .step',
   		offset: 0.8,
-  		debug: true,
+  		// debug: true,
   	})
   	// 3. bind scrollama event handlers
   	.onStepEnter(handleStepEnter)
@@ -639,7 +639,6 @@ Promise.all([
     opacityHolcGrade('B','light');
     opacityHolcGrade('C','light');
     opacityHolcGrade('D','light');
-
     d3.select(this).classed('light',false);
     d3.select(this).classed('show',true);
 
