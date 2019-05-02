@@ -1,28 +1,72 @@
-/************* all ******************/
-body, main, figure, #scrolly {
-  background-color: #24272E;
-  padding: none;
-  margin: none;
-}
-/************************************/
-
-/************ intro *****************/
+/************ INTRO *****************/
 #intro {
-  height: 50vh;
+  height: 100vh;
+  color: #fff;
+  position: relative;
+}
+
+#intro h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 6vw;
+  margin: 0;
+}
+
+#intro h2 {
+  font-size: 1.7vw;
+  font-weight: 400;
+}
+
+#background p {
+  /* margin-bottom: 20vh; */
+}
+
+.vert-center {
+  width: 70%;
+  left: 15%;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  margin: auto;
+}
+
+.horiz-center {
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.author a, p.author {
+  color: #686f84;
+}
+
+@media screen and (max-width : 600px){
+  .vert-center {
+    width: 100%;
+    left: 0%;
+  }
+  #intro h1 {
+    font-size: 42px;
+    text-align: center;
+  }
+  #intro h2 {
+    font-size: 14px;
+  }
 }
 /************************************/
 
-/********** Redlining Map ***********/
+/********** REDLINING MAP ***********/
 figure svg {
-  background: #24272E;
   width: 100%;
   height: 100%;
 }
 
 .borough {
-  stroke-width:1;
-  stroke:#A1A7A8;
-  opacity: 0.3;
+  stroke-width:0.5;
+  stroke:#515661;
+  opacity: 0.8;
   fill:none;
   z-index:2;
 }
@@ -80,33 +124,61 @@ path.hover-path {
   opacity: 1;
 }
 
-
 path {
   transition: opacity 0.2s ease-in-out;
 }
-
-.redline {
-  height: 40vh;
-}
 /************************************/
 
-/******** Comp spark lines **********/
+/******** COMP SPARK LINES **********/
 svg.sparkSVG, svg.exploreSparkSVG {
-  background: #24272E;
-  /* background: white; */
   width: 100%;
+  height: 22vh;
   margin: 1rem auto;
 }
 
 .sparkLine, .exploreSparkLine {
   fill: none;
-  stroke-width: 4;
-  /* stroke: #000; */
+  stroke-width: 6;
+}
+
+text {
+  font-size: 12px;
+  fill: #fff;
 }
 
 /* grid */
 .grid-line, .explore-grid-line {
-  stroke: #3E4450;
+  stroke: #515661;
+}
+
+/* hover tooltip */
+.hoverRect, .explore-hoverRect {
+  stroke: #fff;
+  fill: #000;
+  opacity: 0;
+}
+
+.col h2.tooltip {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+text.hover-year {
+  font-weight: 700;
+  font-size: 120%;
+  fill: currentColor;
+}
+
+text.non-hover-year {
+  fill: #515661;
+}
+
+circle.hoverCircle, circle.explore-hoverCircle {
+  display: none;
+  fill: none;
+  stroke-width: 3px;
+  r: 5;
+  /* stroke-dasharray: 2; */
 }
 /************************************/
 
@@ -123,31 +195,137 @@ svg.sparkSVG, svg.exploreSparkSVG {
 .text-d {
   color: #CC6D7B;
 }
+
+.background-a {
+  background: #8C9F5B;
+}
+.background-b {
+  background-color: #8AA1AB;
+}
+.background-c {
+  background: #D6B64C;
+}
+.background-d {
+  background: #CC6D7B;
+}
+
+blockquote {
+  /* background: #f9f9f9; */
+  border-left: 8px solid #515661;
+  margin: 1.5em 10px;
+  padding: 0.5em 20px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #515661;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #24272E;
+  content: close-quote;
+}
+/************************************/
+
+/********** HOUSE MAP DOTS **********/
+circle {
+  fill: #fff;
+  /* stroke: #000;
+  stroke-width: 2px; */
+  r: 4px;
+}
+
+circle.house-hide {
+  display:none;
+}
+
+/* circle.house-a {
+  stroke:#8C9F5B
+}
+
+circle.house-b {
+  stroke:#8C9F5B
+}
+
+circle.house-c {
+  stroke:#8C9F5B
+}
+
+circle.house-d {
+  stroke:#8C9F5B
+} */
+/************************************/
+
+/************* EXPLORE **************/
+path.click-path {
+  opacity: 1;
+}
 /************************************/
 
 /********** COLUMN LAYOUT ***********/
 /* https://www.w3schools.com/howto/howto_css_three_columns.asp */
 .col {
   float: left;
+  text-align: center;
 }
 
 .one-third {
   width: 33.3%;
 }
 
+.one-half {
+  width: 50%;
+}
+
+.full {
+  width: 100%;
+}
+
 .left {
   width: 25%;
+  min-width: 25%;
 }
 
 .right {
   width: 75%;
 }
 
+.half-right {
+  width: 37.5%;
+}
+
 .col h2 {
   text-align: right;
   padding-right: 1rem;
-  margin-top: 1rem  ;
+  margin-top: 1rem;
   font-size: 12px;
+  font-weight: 400;
+}
+
+.col p {
+  margin: 5rem auto;
+}
+
+p.comparison-summary {
+  text-align: left;
+  padding: 10vh 4rem;
+  margin: 10vh 0;
+  /* margin-bottom: 50vh; */
+  border-top: 2px dotted #515661;
+  border-bottom: 2px dotted #515661;
+}
+
+p.caption {
+  margin: 0 2.5%;
+  font-size: 80%;
+  text-align: left;
+  font-style: italic;
+  color: #999999;
 }
 
 /* Clear floats after the columns */
@@ -159,13 +337,27 @@ svg.sparkSVG, svg.exploreSparkSVG {
 
 /* neighborhood icons */
 .row img {
-  max-height: 110px;
-  margin: 0 1rem;
+  /* max-height: 110px; */
+  /* margin: 0 1rem; */
+  max-width: 95%;
+}
+
+.first-row {
+  /* position: sticky;
+  top: 0; */
+}
+
+.first-row p {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.7vw;
+  padding: 0.4rem 0;
+  margin: 1rem 0.5rem;
 }
 
 /************************************/
 
-/* Scrollytelling */
+/********** SCROLLYTELLING **********/
 #scrolly {
   position: relative;
 }
@@ -182,7 +374,7 @@ svg.sparkSVG, svg.exploreSparkSVG {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 .scrolly-flex > * {
@@ -192,22 +384,24 @@ svg.sparkSVG, svg.exploreSparkSVG {
 }
 
 .scrolly-flex > article {
-  max-width: 35%;
+  max-width: 50%;
 }
 
 #explore {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  padding: 0 2rem;
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* height: 100vh; */
+  width: 96%;
+  padding: 6% 2%;
 }
 
 article {
   position: relative;
-	padding: 0 1rem;
-  /* transform: translateY(-70vh); */
+}
+
+.gradient-background {
+  background-image: linear-gradient(to left,rgba(36,39,46,0.8),rgba(36,39,46,0.7),rgba(36,39,46,0),rgba(36,39,46,0));
 }
 
 figure {
@@ -219,44 +413,23 @@ figure {
 	-webkit-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
-	background-color: #8a8a8a;
-}
-
-.step {
-	/* margin: 0 auto 2rem auto; */
-	/* border: 2px solid #fff; */
-  background-color: #24272E;
-	color: #fff;
-}
-
-.step.is-active {
-	/* background-color: goldenrod; */
-	/* color: #3b3b3b; */
-}
-
-.step p {
-	text-align: center;
-	padding: 1rem;
-	font-size: 1.5rem;
 }
 
 /*********** SCROLLY (STEPS) ************/
 
 .narrow-left {
   width: 35%;
+  padding-left: 5%;
 }
 
 .wide-right {
   width: 70%;
   left: 30%;
   position: relative;
-  /* height: 100vh; */
-  /* background-color: rgba(0,0,0); */
 }
 
-.wide-right-step {
+.wide-right-child {
   width: 80%;
-  /* max-width: 700px; */
   margin: 0 auto;
 }
 
@@ -265,7 +438,7 @@ figure {
 }
 
 .section-end {
-  margin-bottom: 80vh;
+  padding-bottom: 60vh;
 }
 
 .full-page {
@@ -273,16 +446,57 @@ figure {
   height: 100vh;
 }
 
-figure {
-  transition: display 0.5s ease-in-out;
-}
-
-article {
-  transition: width 0.5s ease-in-out;
-}
-
 /************************************/
 
+/************* ALL ******************/
 * {
-  font-family: 'Taviraj', sans-serif;
+  font-family: 'Taviraj', serif;
+  color: #fff;
 }
+
+.bold {
+  font-weight: 700;
+}
+
+.byline {
+  font-size: 1.7vw;
+}
+
+body, main, figure, #scrolly {
+  background-color: #24272E;
+  margin: 0;
+}
+
+a {
+  color: #fff;
+  font-weight: 700;
+}
+
+a:hover, ::selection {
+  color: #666f83;
+}
+
+.highlight {
+  background: #3E4450;
+  box-sizing: border-box;
+  padding: 1.4rem;
+  width: 50%;
+  margin: 0 25% 4rem 25%;;
+}
+
+.highlight p {
+  text-align: left;
+  margin: 0 1.4rem 1.4rem 1.4rem;
+}
+
+@media screen and (max-width : 600px){
+  .highlight {
+    width: 100%;
+    margin: 0 0 4rem 0;
+  }
+
+  .byline {
+    font-size: 16px;
+  }
+}
+/************************************/
