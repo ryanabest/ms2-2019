@@ -60,7 +60,7 @@ def match_HOLC(holc_zone,year,i):
             cens_poly = Polygon(tupelify(tract['geometry']['coordinates'][0]))
             if holc_poly.intersects(cens_poly):
                 percent_overlap = holc_poly.intersection(cens_poly).area / holc_poly.area
-                census_matches.append({
+                match_results = {
                      'pct_match':percent_overlap
                     ,'pct_nonwhite':tract['properties']['Percent Non-White']
                     ,'pct_white':tract['properties']['Percent White']
@@ -70,9 +70,11 @@ def match_HOLC(holc_zone,year,i):
                     ,'median_home_value_2010':tract['properties']['Median Home Value 2010']
                     ,'total_population':tract['properties']['Total Population']
                     ,'GISJOIN': tract['properties']['GISJOIN']
-                })
+                }
+                pprint(match_results)
+                census_matches.append(match_results)
     #
-    pprint(census_matches)
+    # pprint(census_matches)
     # if holc_zone['properties']['borough'] == 'Brooklyn' and holc_zone['properties']['holc_id'] == 'D22':
     #     weighted_average(census_matches,year)
     if len(census_matches)>0:
@@ -82,8 +84,8 @@ def match_HOLC(holc_zone,year,i):
         holc_zone['properties']['census_match_data'].append(stats)
 
 for (i,holc_zone) in enumerate(holc_zones):
-    if (holc_zone['properties']['borough'] == 'Bronx' and holc_zone['properties']['holc_id'] == 'A1'):
-        match_HOLC(holc_zone,'2000',i)
+    if (holc_zone['properties']['borough'] == 'Brooklyn' and holc_zone['properties']['holc_id'] == 'D22'):
+        match_HOLC(holc_zone,'2010',i)
     # match_HOLC(holc_zone,'1940',i)
     # match_HOLC(holc_zone,'1950',i)
     # match_HOLC(holc_zone,'1960',i)
