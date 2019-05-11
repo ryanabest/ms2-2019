@@ -3,27 +3,75 @@ var width = 700,
 
 
 var projection = d3.geoMercator()
-    .center([-73.98,40.78])
-    .scale(105000)
+    .center([-73.93,40.61])
+    .scale(1005000)
     .translate([width / 2, height / 2]);
 
 var geoGenerator = d3.geoPath()
   .projection(projection);
 
 function init() {
-  d3.json('data/boroughs.geojson').then(function(map) {
+  Promise.all([
+    d3.json('../../old-census/IPUMS/Data/2010/NY_tract_2010.json'),
+    d3.json('data/HOLC_Brooklyn.geojson'),
+    d3.json('../../thesis/Data/HOLC_All_Years.geojson'),
+  ]).then((json) => {
+    var map = json[0];
+    var holc = json[1];
+
+    console.log(json[2]);
+
+    // json[2].features.forEach((bklyn)=> {
+    //   // console.log(bklyn);
+    //   if (bklyn.properties.city == 'Brooklyn' && bklyn.properties.holc_id == 'D22') {
+    //     console.log(bklyn);
+    //   }
+    // })
+
+    let brooklynD22Census = [];
+    let brooklynD22Holc = []
+
+    map.features.forEach((tract) => {
+      if (tract.properties.GISJOIN == 'G3600470069602') {
+        brooklynD22Census.push(tract);
+      } else if (tract.properties.GISJOIN == 'G3600470070000') {
+        brooklynD22Census.push(tract);
+      } else if (tract.properties.GISJOIN == 'G3600470070600') {
+        brooklynD22Census.push(tract);
+      };
+    });
+
+    holc.features.forEach((zone) => {
+
+      if (zone.properties.holc_id == 'D22') {
+        brooklynD22Holc.push(zone);
+        console.log(zone);
+      };
+    });
 
     let g = svg.append('g')
                .attr('class','g-boroughs')
 
-    g.selectAll('path')
-               .data(map.features)
+    g.selectAll('path.census')
+               .data(brooklynD22Census)
                .enter()
                .append('path')
+               .attr('class','census')
                .attr('d',geoGenerator)
                .attr("stroke-width",3)
                .attr("stroke","grey")
                .attr("fill","none")
+               .on('mouseover',(d) => {console.log(d);})
+
+     g.selectAll('path.holc')
+                .data(brooklynD22Holc)
+                .enter()
+                .append('path')
+                .attr('class','holc')
+                .attr('d',geoGenerator)
+                .attr("stroke-width",3)
+                .attr("stroke","white")
+                .attr("fill","none")
   })
 
   // d3.json('data/CensusTracts.json').then(function(map) {
