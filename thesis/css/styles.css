@@ -218,7 +218,7 @@ svg.sparkSVG {
 }
 
 svg.exploreSparkSVG {
-  height: 25vh;
+  height: 24vh;
 }
 
 .sparkLine, .exploreSparkLine {
@@ -248,7 +248,7 @@ text {
   text-align: right;
   padding-right: 0.5em;
   margin-top: 16px;
-  font-size: 0.9em;
+  font-size: 0.8em;
   /* letter-spacing: 0.07em; */
   font-weight: 400;
   font-family: 'Work Sans', sans-serif;
@@ -486,13 +486,7 @@ button:hover {
 
 p.comparison-summary {
   text-align: left;
-  margin: 30px auto;
-  max-width: 700px;
-}
-
-p.comparison-text {
-  text-align: left;
-  margin: 20px auto;
+  margin: 20px 0px;
   max-width: 700px;
 }
 
@@ -704,4 +698,45 @@ figure.hover:hover {
 #intro-animation {
   width: 100%;
   height: 100%;
+}
+
+/************ FOOTNOTE **************/
+
+#footnote {
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+
+#footnote * {
+  color: #c9c9c9;
+  margin-top: 0px;
+}
+
+#footnote h1 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 20px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+#footnote p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#footnote a {
+  font-weight: 400;
+}
+
+#footnote a:hover {
+  color: #666f83;
+}
+
+#footnote:before {
+    width: 40%;
+    content: '';
+    display: inline-block;
+    height: 2px;
+    margin: 0;
+    background-color: #c9c9c9;
 }

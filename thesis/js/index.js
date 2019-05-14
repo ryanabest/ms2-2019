@@ -875,10 +875,11 @@ Promise.all([
     d3.select('.hover-label').text('').attr('class','bold hover-label')
     d3.select('.click-label').text('').attr('class','bold click-label')
 
-    // show the explore data step
+    // show only the explore data step
     d3.select('#intro').classed('display-none',true);
     d3.select('#background').classed('display-none',true);
     d3.selectAll('.step').classed('display-none',true);
+    d3.select('#footnote').classed('display-none',true);
     d3.select('#explore').classed('display-none',false);
     d3.select('figure').classed('hover',true);
 
@@ -910,6 +911,7 @@ Promise.all([
     d3.select('#intro').classed('display-none',false);
     d3.select('#background').classed('display-none',false);
     d3.selectAll('.step').classed('display-none',false);
+    d3.select('#footnote').classed('display-none',false);
     d3.select('#explore').classed('display-none',true);
     d3.select('figure').classed('hover',false);
     d3.select('#sticky-button-explore').classed('display-none',false);
