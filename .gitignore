@@ -7,6 +7,7 @@ qual/ZonePDFs/*
 !qual/ZonePDFs/All
 qual/zonePDFs_overlap/*
 quant/tableau/*
+keynote/*
 
 wireframe/wireframe.sketch
 old-census/HOLC/20190403/*
@@ -15,6 +16,7 @@ old-census/HOLC/CSV/HOLC_All_Years.hyper
 
 # interview audio
 *.m4a
+
 
 # IMPUS Shapefiles
 old-census/IPUMS/Raw/1930/nhgis0004_shapefile_tl2000_us_tract_1930
