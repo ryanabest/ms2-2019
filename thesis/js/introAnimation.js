@@ -28,7 +28,7 @@ Promise.all([
 
    animateResizeMapAllZones();
 
-   setTimeout(animateLines,500);
+   setTimeout(animateLines,400);
 
    window.addEventListener('resize', animateResizeMapAllZones);
 
@@ -39,9 +39,9 @@ Promise.all([
         .attr('stroke-dashoffset',(d) => d.totalLength)
         .attr('z-index',(d,i)=>numberOfZones-i)
         .transition()
-         .duration((d)=>3000)
+         .duration((d)=>2500)
          .ease(d3.easeCubic)
-         .delay((d,i) => 0 + (30*i))
+         .delay((d,i) => 600 + (30*i))
          .attr("stroke-dashoffset", 0);
        }
 
