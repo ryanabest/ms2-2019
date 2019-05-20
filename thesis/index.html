@@ -17,6 +17,18 @@
 
 <body>
 
+  <div id='mobile-warning' class='mobile-warning-hide'>
+    <div id='mobile-warning-menu'>
+      <span id='mobile-warning-close' onclick='d3.select("#mobile-warning").attr("class","mobile-warning-hide"); return false;'>x</span>
+    </div>
+    <div id='mobile-warning-text'>
+      <h1>Drawing Discrimination is a Desktop&nbsp;Experience</h1>
+      <p>
+        This visualization was built as a desktop-only project, <i>for now</i>. For the best experience viewing Drawing Discrimination, please visit on a desktop&nbsp;computer.
+      </p>
+    </div>
+  </div>
+
   <main>
     <section id="intro">
       <svg id='intro-animation'></svg>
@@ -582,9 +594,21 @@
     // var pctWhiteVar = {subFrom:0,multBy:-1}; // PCT WHITE
   </script>
 
-  <!-- <script src="js/map.js"></script> --> <!-- DO I WANT TO ADD IN THE MANHATTAN ANIMATION HERE? -->
+  <script src="js/introAnimation.js"></script>
   <script src='js/index.js'></script>
   <script src='js/juxtapose.js'></script>
+  <script>
+  showMobileWarning();
+  window.addEventListener('resize', showMobileWarning);
+
+  function showMobileWarning() {
+    if (screen.width <= 768) {
+      d3.select('#mobile-warning').attr('class','mobile-warning-show');
+    } else {
+      d3.select('#mobile-warning').attr('class','mobile-warning-hide');
+    }
+  }
+  </script>
 </body>
 
 </html>
