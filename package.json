@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/ryanabest/ms2-2019#readme",
   "dependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.5",
     "gulp": "^4.0.0",
     "gulp-sass": "^4.0.2"
   }
